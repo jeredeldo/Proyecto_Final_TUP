@@ -4,8 +4,8 @@ import requests
 from io import StringIO
 
 # URLs
-url_smn = "https://gist.githubusercontent.com/pablo27207/4019b9e58671a9ea3f9c9daf13c7c4ae/raw/e77b9306d8c4d3deee66a5278df9be8b173f0996/SMN.CSV"
-url_icao = "https://gist.githubusercontent.com/pablo27207/b1e7056d814c3325d6caf0d69bb4f64a/raw/27430bc48e92b7eb62d77718903d3fbc94a19b1c/ICAO.csv"
+url_smn = "https://gist.githubusercontent.com/jeredeldo/aecbbee1f5afc5c3ff92fda19a89e6d9/raw/ba44c64201be5a24927d3b18ccc90cc84e91d92f/SMN.CSV"
+url_icao = "https://gist.githubusercontent.com/jeredeldo/e4d8eba7032bd7ac7178b898d71760dd/raw/284df0cd6853b77b74ab79ac3748f33cf4bedf23/ICAO.csv"
 
 # Descargamos manualmente para controlar encoding y separador
 response = requests.get(url_smn)

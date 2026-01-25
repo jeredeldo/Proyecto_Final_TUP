@@ -5,117 +5,100 @@ import numpy as np
 from functools import lru_cache
 import unicodedata
 
-# Función para normalizar nombres (quita tildes, lower, remueve sufijos comunes)
+# Normalización de nombres (igual que antes)
 def normalize_name(name):
     if pd.isna(name):
         return ''
     name = str(name).strip().lower()
-    # Quitar acentos/tildes
     name = ''.join(c for c in unicodedata.normalize('NFD', name) if unicodedata.category(c) != 'Mn')
-    # Remover sufijos comunes y variaciones
     for suf in [' aero', ' obs', ' obs.', ' b.a.', ' del rio seco', ' del río seco', ' (mza)', ' base']:
         name = name.replace(suf, '')
-    name = name.strip().replace('  ', ' ')  # limpia espacios extra
+    name = name.strip().replace('  ', ' ')
     return name
 
-# Cargamos el CSV
+# Cargar CSV principal
 df = pd.read_csv("estaciones_viento_limpio.csv")
 
-# Cargamos tabla SMN
-print("Cargando lista oficial de estaciones SMN...")
-url_smn = "http://db.at.fcen.uba.ar/station/location_data"
-df_smn = pd.read_html(url_smn)[0]
+# Cargar Gist con ICAO (¡esto llena los nulls!)
+print("Cargando ICAO desde Gist...")
+url_gist = "https://gist.githubusercontent.com/jeredeldo/e4d8eba7032bd7ac7178b898d71760dd/raw/284df0cd6853b77b74ab79ac3748f33cf4bedf23/ICAO.csv"
+df_gist = pd.read_csv(url_gist, sep=';')  # Separador es ';'
 
-print("Columnas SMN:", df_smn.columns.tolist())
+# Crear dict: nombre normalizado → ICAO
+icao_dict = {}
+for _, row in df_gist.iterrows():
+    estacion_raw = str(row.get('Estación', '')).strip()  # Columna 'Estación'
+    icao = str(row.get('ICAO', '')).strip().upper()
+    if icao and estacion_raw:
+        norm = normalize_name(estacion_raw)
+        icao_dict[norm] = icao
 
-# Diccionarios
+print(f"ICAO cargados desde Gist: {len(icao_dict)}")
+
+# Cargar SMN para fallback coords (si iatageo falla)
+print("Cargando SMN...")
+df_smn = pd.read_html("http://db.at.fcen.uba.ar/station/location_data")[0]
 smn_dict_icao = {}
 smn_dict_name = {}
 for _, row in df_smn.iterrows():
     icao = str(row.get('OACI', '')).strip().upper()
-    name_raw = str(row.get('Localidad', '')).strip()
-    name_norm = normalize_name(name_raw)
-    lat = row.get('Lat.[gr] [min]', np.nan)
-    lon = row.get('Lon.[gr] [min]', np.nan)
-    try:
-        lat = float(lat)
-        lon = float(lon)
-        if not (np.isnan(lat) or np.isnan(lon)):
-            if icao:
-                smn_dict_icao[icao] = (lat, lon)
-            if name_norm:
-                smn_dict_name[name_norm] = (lat, lon)  # key normalizada
-                # Opcional: agregar variaciones extras si querés
-                if 'quiaca' in name_norm:
-                    smn_dict_name['la quiaca'] = (lat, lon)
-                if 'villa maria' in name_norm:
-                    smn_dict_name['villa maria del rio seco'] = (lat, lon)
-    except:
-        pass
+    name_norm = normalize_name(row.get('Localidad', ''))
+    lat = float(row.get('Lat.[gr] [min]', np.nan))
+    lon = float(row.get('Lon.[gr] [min]', np.nan))
+    if not np.isnan(lat) and not np.isnan(lon):
+        if icao:
+            smn_dict_icao[icao] = (lat, lon)
+        if name_norm:
+            smn_dict_name[name_norm] = (lat, lon)
 
-print(f"Estaciones SMN: {len(smn_dict_icao)} ICAO, {len(smn_dict_name)} nombres normalizados.")
-
-# Función principal
+# Función: llenar ICAO si null, luego obtener coords
 @lru_cache(maxsize=200)
-def get_lat_lon(icao, estacion):
-    icao_str = str(icao).strip().upper() if not pd.isna(icao) else ''
-    estacion_raw = str(estacion).strip()
-    estacion_norm = normalize_name(estacion_raw)
+def get_icao_and_coords(icao_orig, estacion):
+    icao = str(icao_orig).strip().upper() if not pd.isna(icao_orig) else ''
+    estacion_norm = normalize_name(estacion)
     
-    print(f"Procesando: ICAO='{icao_str}', Estación raw='{estacion_raw}' → norm='{estacion_norm}'")
+    # Llenar ICAO si está vacío, desde Gist
+    if not icao and estacion_norm in icao_dict:
+        icao = icao_dict[estacion_norm]
+        print(f"Llenado ICAO para '{estacion}' ({estacion_norm}): {icao}")
     
-    if not icao_str and not estacion_norm:
-        return np.nan, np.nan
+    # Obtener coords con ICAO (prefer iatageo)
+    if icao:
+        try:
+            r = requests.get(f"https://iatageo.com/getICAOLatLng/{icao}", timeout=10)
+            if r.status_code == 200:
+                data = r.json()
+                lat = float(data.get('latitude', np.nan))
+                lon = float(data.get('longitude', np.nan))
+                if not np.isnan(lat) and not np.isnan(lon):
+                    print(f"Coords desde iatageo ({icao}): {lat}, {lon}")
+                    return icao, lat, lon
+        except Exception as e:
+            print(f"Error iatageo para {icao}: {e}")
     
-    # 1. iatageo si hay ICAO
-    if icao_str:
-        url = f"https://iatageo.com/getICAOLatLng/{icao_str}"
-        for attempt in range(3):
-            try:
-                r = requests.get(url, timeout=10)
-                if r.status_code == 200:
-                    data = r.json()
-                    lat = float(data.get('latitude', np.nan))
-                    lon = float(data.get('longitude', np.nan))
-                    if not (np.isnan(lat) or np.isnan(lon)):
-                        print(f"Éxito iatageo {icao_str}: {lat}, {lon}")
-                        return lat, lon
-            except Exception as e:
-                print(f"Fallo intento {attempt+1} iatageo {icao_str}: {e}")
-            time.sleep(1.5)
-    
-    # 2. SMN por ICAO
-    if icao_str in smn_dict_icao:
-        lat, lon = smn_dict_icao[icao_str]
-        print(f"Éxito SMN ICAO {icao_str}: {lat}, {lon}")
-        return lat, lon
-    
-    # 3. SMN por nombre normalizado (exacto)
+    # Fallback SMN
+    if icao in smn_dict_icao:
+        lat, lon = smn_dict_icao[icao]
+        print(f"Coords desde SMN ICAO {icao}: {lat}, {lon}")
+        return icao, lat, lon
     if estacion_norm in smn_dict_name:
         lat, lon = smn_dict_name[estacion_norm]
-        print(f"Éxito SMN nombre '{estacion_norm}': {lat}, {lon}")
-        return lat, lon
+        print(f"Coords desde SMN nombre '{estacion_norm}': {lat}, {lon}")
+        return icao, lat, lon
     
-    # 4. Intentos parciales si no exacto (opcional, descomenta si faltan pocas)
-    # for key in smn_dict_name:
-    #     if estacion_norm in key or key in estacion_norm:
-    #         lat, lon = smn_dict_name[key]
-    #         print(f"Éxito parcial nombre '{key}' para '{estacion_norm}': {lat}, {lon}")
-    #         return lat, lon
-    
-    print(f"Falló: ICAO '{icao_str}' / Estación norm '{estacion_norm}'")
-    return np.nan, np.nan
+    print(f"No coords para '{estacion}' (ICAO: {icao})")
+    return icao, np.nan, np.nan
 
 # Aplicar
-print("\nGeocodificando...")
-df[['lat', 'lon']] = df.apply(lambda row: pd.Series(get_lat_lon(row['ICAO'], row['Estación'])), axis=1)
+print("Procesando estaciones...")
+results = df.apply(lambda row: get_icao_and_coords(row['ICAO'], row['Estación']), axis=1)
+df[['ICAO', 'lat', 'lon']] = pd.DataFrame(results.tolist(), index=df.index)
 
+# Limpiar y guardar
+df['ICAO'] = df['ICAO'].replace('', np.nan).fillna('No encontrado')  # Opcional: si aún null, pon texto
 df_valid = df.dropna(subset=['lat', 'lon'])
-print(f"\nVálidas: {len(df_valid)} de {len(df)}")
-
-print("\nEjemplo:")
-print(df_valid[['Estación', 'ICAO', 'viento_promedio', 'lat', 'lon']].head(10))
+print(f"Válidas: {len(df_valid)} / {len(df)}")
 
 df.to_csv("estaciones_con_coordenadas.csv", index=False, encoding='utf-8-sig')
 df_valid.to_csv("estaciones_con_coordenadas_validas.csv", index=False, encoding='utf-8-sig')
-print("Guardado.")
+print("¡Listo! CSV actualizado sin ICAO null (o muy pocos).")

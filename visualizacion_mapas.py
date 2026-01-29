@@ -1,5 +1,6 @@
 import pandas as pd
 import plotly.express as px
+import numpy as np
 import os
 
 archivo = "estaciones_viento_con_icao_coords.csv"
@@ -27,7 +28,6 @@ fig_bubble = px.scatter_mapbox(
     color="viento_promedio",
     hover_name="Estación",
     hover_data={"viento_promedio": ":.1f km/h", "ICAO": True, "Provincia": True},
-    # Bajo claro/amarillo, alto rojo
     color_continuous_scale=px.colors.sequential.YlOrRd,
     zoom=4.2,
     center={"lat": -38.0, "lon": -65.0},
@@ -43,19 +43,46 @@ fig_bubble.update_layout(
 
 fig_bubble.show()
 
-# Heatmap de intensidad
+"""
+Heatmap suavizado sin sesgo de densidad
+1) Se promedia el viento por celdas regulares (una muestra por celda)
+2) Se aplica KDE con density_mapbox usando ese promedio como intensidad
+Así evitamos que zonas con muchas estaciones pesen más por cantidad.
+"""
+
+# Tamaño de celda en grados (ajusta suavidad del promedio)
+cell_deg = 0.6
+
+lat_min, lon_min = df['lat'].min(), df['lon'].min()
+lat_bin = np.floor((df['lat'] - lat_min) / cell_deg).astype(int)
+lon_bin = np.floor((df['lon'] - lon_min) / cell_deg).astype(int)
+df_cells = df.assign(lat_bin=lat_bin, lon_bin=lon_bin)
+
+agg = df_cells.groupby(['lat_bin', 'lon_bin']).agg(
+    mean_viento=("viento_promedio", "mean"),
+    estaciones=("viento_promedio", "size")
+).reset_index()
+
+# Centro de cada celda (una muestra por celda)
+agg['lat'] = lat_min + (agg['lat_bin'] + 0.5) * cell_deg
+agg['lon'] = lon_min + (agg['lon_bin'] + 0.5) * cell_deg
+
+# Rango de color basado en los promedios
+rc_min = float(agg['mean_viento'].min())
+rc_max = float(agg['mean_viento'].max())
+
 fig_heat = px.density_mapbox(
-    df,
+    agg,
     lat="lat",
     lon="lon",
-    z="viento_promedio",
-    radius=45,
+    z="mean_viento",
+    radius=50,
     zoom=4.2,
     center={"lat": -38.0, "lon": -65.0},
     mapbox_style="open-street-map",
-    # Consistente con el mapa de burbujas: bajo claro, alto rojo
-    color_continuous_scale=px.colors.sequential.YlOrRd,
-    title="Mapa de calor: Zonas con mayor viento promedio"
+    color_continuous_scale=px.colors.sequential.Plasma_r,
+    range_color=(rc_min, rc_max),
+    title="Mapa de calor: Viento promedio (suavizado por celda)"
 )
 
 fig_heat.update_layout(margin={"r":0, "t":60, "l":0, "b":0})

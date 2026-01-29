@@ -27,7 +27,8 @@ fig_bubble = px.scatter_mapbox(
     color="viento_promedio",
     hover_name="Estación",
     hover_data={"viento_promedio": ":.1f km/h", "ICAO": True, "Provincia": True},
-    color_continuous_scale=px.colors.sequential.OrRd_r,
+    # Escala: valores bajos claros/amarillos, altos en rojo
+    color_continuous_scale=px.colors.sequential.YlOrRd,
     zoom=4.2,
     center={"lat": -38.0, "lon": -65.0},
     mapbox_style="open-street-map",
@@ -52,7 +53,8 @@ fig_heat = px.density_mapbox(
     zoom=4.2,
     center={"lat": -38.0, "lon": -65.0},
     mapbox_style="open-street-map",
-    color_continuous_scale=px.colors.sequential.Hot_r,
+    # Escala consistente con el mapa de burbujas: bajo claro, alto rojo
+    color_continuous_scale=px.colors.sequential.YlOrRd,
     title="Mapa de calor: Zonas con mayor viento promedio"
 )
 

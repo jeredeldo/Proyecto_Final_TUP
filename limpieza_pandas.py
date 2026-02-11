@@ -4,7 +4,7 @@ import requests
 from io import StringIO
 import unicodedata
 import sqlalchemy
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 def normalize_station(name):
     if pd.isna(name) or not name:
@@ -89,10 +89,35 @@ DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 try:
     print(f"\nGuardando datos en PostgreSQL ({DB_NAME})...")
     engine = create_engine(DATABASE_URL)
-    # Usamos una conexión explícita (mejor práctica para SQLAlchemy 2.0)
-    with engine.begin() as connection:
-        df_merged.to_sql('estaciones', connection, if_exists='replace', index=False)
-    print("¡Éxito! Tabla 'estaciones' creada/actualizada.")
+
+    # Crear tabla y insertar datos usando SQL raw (compatible con Pandas 3.0 + SQLAlchemy 2.0)
+    with engine.begin() as conn:
+        conn.execute(text("DROP TABLE IF EXISTS estaciones"))
+        conn.execute(text("""
+            CREATE TABLE estaciones (
+                "Estación" TEXT,
+                viento_promedio DOUBLE PRECISION,
+                "ICAO" TEXT,
+                lat DOUBLE PRECISION,
+                lon DOUBLE PRECISION,
+                "Altura_m" DOUBLE PRECISION,
+                "Provincia" TEXT
+            )
+        """))
+        for _, row in df_merged.iterrows():
+            conn.execute(text("""
+                INSERT INTO estaciones ("Estación", viento_promedio, "ICAO", lat, lon, "Altura_m", "Provincia")
+                VALUES (:est, :viento, :icao, :lat, :lon, :alt, :prov)
+            """), {
+                "est": row.get("Estación"),
+                "viento": row.get("viento_promedio"),
+                "icao": row.get("ICAO"),
+                "lat": row.get("lat"),
+                "lon": row.get("lon"),
+                "alt": row.get("Altura_m"),
+                "prov": row.get("Provincia"),
+            })
+    print(f"¡Éxito! Tabla 'estaciones' creada con {len(df_merged)} filas.")
 except Exception as e:
     print(f"\nNo se pudo guardar en la base de datos: {e}")
     if "multiple values for argument 'schema'" in str(e):

@@ -2,48 +2,136 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Tooltip, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import 'leaflet.heat';
 import './App.css';
 
-/* ─── Color por velocidad de viento ─── */
+/* ─── Paleta de colores compartida (misma para burbujas y heatmap) ─── */
+const COLOR_STOPS = [
+  { v: 0,  r: 66,  g: 133, b: 244 },
+  { v: 8,  r: 0,   g: 188, b: 212 },
+  { v: 13, r: 76,  g: 175, b: 80  },
+  { v: 18, r: 255, g: 193, b: 7   },
+  { v: 22, r: 255, g: 87,  b: 34  },
+  { v: 28, r: 211, g: 47,  b: 47  },
+];
+
 function windColor(speed) {
-  const stops = [
-    { v: 0, r: 66, g: 133, b: 244 },
-    { v: 8, r: 0, g: 188, b: 212 },
-    { v: 13, r: 76, g: 175, b: 80 },
-    { v: 18, r: 255, g: 193, b: 7 },
-    { v: 22, r: 255, g: 87, b: 34 },
-    { v: 28, r: 211, g: 47, b: 47 },
-  ];
-  if (speed <= stops[0].v) return `rgb(${stops[0].r},${stops[0].g},${stops[0].b})`;
-  if (speed >= stops[stops.length - 1].v) {
-    const s = stops[stops.length - 1];
+  if (speed <= COLOR_STOPS[0].v)
+    return `rgb(${COLOR_STOPS[0].r},${COLOR_STOPS[0].g},${COLOR_STOPS[0].b})`;
+  if (speed >= COLOR_STOPS[COLOR_STOPS.length - 1].v) {
+    const s = COLOR_STOPS[COLOR_STOPS.length - 1];
     return `rgb(${s.r},${s.g},${s.b})`;
   }
-  for (let i = 0; i < stops.length - 1; i++) {
-    if (speed >= stops[i].v && speed <= stops[i + 1].v) {
-      const t = (speed - stops[i].v) / (stops[i + 1].v - stops[i].v);
-      const r = Math.round(stops[i].r + t * (stops[i + 1].r - stops[i].r));
-      const g = Math.round(stops[i].g + t * (stops[i + 1].g - stops[i].g));
-      const b = Math.round(stops[i].b + t * (stops[i + 1].b - stops[i].b));
+  for (let i = 0; i < COLOR_STOPS.length - 1; i++) {
+    if (speed >= COLOR_STOPS[i].v && speed <= COLOR_STOPS[i + 1].v) {
+      const t = (speed - COLOR_STOPS[i].v) / (COLOR_STOPS[i + 1].v - COLOR_STOPS[i].v);
+      const r = Math.round(COLOR_STOPS[i].r + t * (COLOR_STOPS[i + 1].r - COLOR_STOPS[i].r));
+      const g = Math.round(COLOR_STOPS[i].g + t * (COLOR_STOPS[i + 1].g - COLOR_STOPS[i].g));
+      const b = Math.round(COLOR_STOPS[i].b + t * (COLOR_STOPS[i + 1].b - COLOR_STOPS[i].b));
       return `rgb(${r},${g},${b})`;
     }
   }
-  return '#1e88e5';
+  return `rgb(${COLOR_STOPS[0].r},${COLOR_STOPS[0].g},${COLOR_STOPS[0].b})`;
 }
 
-/* ─── HeatmapLayer ─── */
+function windColorRGB(speed) {
+  if (speed <= COLOR_STOPS[0].v) return COLOR_STOPS[0];
+  if (speed >= COLOR_STOPS[COLOR_STOPS.length - 1].v) return COLOR_STOPS[COLOR_STOPS.length - 1];
+  for (let i = 0; i < COLOR_STOPS.length - 1; i++) {
+    if (speed >= COLOR_STOPS[i].v && speed <= COLOR_STOPS[i + 1].v) {
+      const t = (speed - COLOR_STOPS[i].v) / (COLOR_STOPS[i + 1].v - COLOR_STOPS[i].v);
+      return {
+        r: Math.round(COLOR_STOPS[i].r + t * (COLOR_STOPS[i + 1].r - COLOR_STOPS[i].r)),
+        g: Math.round(COLOR_STOPS[i].g + t * (COLOR_STOPS[i + 1].g - COLOR_STOPS[i].g)),
+        b: Math.round(COLOR_STOPS[i].b + t * (COLOR_STOPS[i + 1].b - COLOR_STOPS[i].b)),
+      };
+    }
+  }
+  return COLOR_STOPS[0];
+}
+
+/* ─── HeatmapLayer con IDW (misma paleta que burbujas, sin acumulación) ─── */
 function HeatmapLayer({ points }) {
   const map = useMap();
   useEffect(() => {
     if (!points?.length || !map) return;
-    const maxWind = Math.max(...points.map((p) => p.viento_promedio));
-    const heatPoints = points.map((p) => [p.lat, p.lon, p.viento_promedio / maxWind]);
-    const heatLayer = L.heatLayer(heatPoints, {
-      radius: 35, blur: 25, maxZoom: 12, minOpacity: 0.35,
-      gradient: { 0.0: '#313695', 0.2: '#4575b4', 0.35: '#74add1', 0.5: '#abd9e9', 0.6: '#fee090', 0.7: '#fdae61', 0.85: '#f46d43', 1.0: '#a50026' },
-    }).addTo(map);
-    return () => map.removeLayer(heatLayer);
+
+    /* Interpolación IDW: para cada píxel calcula la velocidad
+       de viento ponderada por la distancia inversa a cada estación.
+       power=2 → interpolación suave y regional */
+    function idw(lat, lon) {
+      let sumW = 0, sumV = 0, closest = Infinity;
+      for (const p of points) {
+        const dlat = lat - p.lat;
+        const dlon = (lon - p.lon) * Math.cos(lat * Math.PI / 180);
+        const d2 = dlat * dlat + dlon * dlon;
+        const d = Math.sqrt(d2);
+        if (d < 0.05) return { wind: p.viento_promedio, dist: d };
+        const w = 1 / d2; // power=2
+        sumW += w;
+        sumV += w * p.viento_promedio;
+        if (d < closest) closest = d;
+      }
+      return { wind: sumV / sumW, dist: closest };
+    }
+
+    /* Bounds amplios para que bordes queden fuera del viewport */
+    const southLat = -66, northLat = -18;
+    const westLon = -80, eastLon = -38;
+    const bounds = [[southLat, westLon], [northLat, eastLon]];
+    const W = 400, H = 500;
+    const lonRange = eastLon - westLon;
+
+    /* Funciones Mercator para corregir la proyección */
+    const toMerc = (lat) => Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360));
+    const fromMerc = (my) => (2 * Math.atan(Math.exp(my)) - Math.PI / 2) * 180 / Math.PI;
+    const mercNorth = toMerc(northLat);
+    const mercSouth = toMerc(southLat);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.createImageData(W, H);
+
+    for (let y = 0; y < H; y++) {
+      /* Convertir pixel y → lat usando Mercator (no lineal) */
+      const t = y / H;
+      const mercY = mercNorth - t * (mercNorth - mercSouth);
+      const lat = fromMerc(mercY);
+      for (let x = 0; x < W; x++) {
+        const lon = westLon + (x / W) * lonRange;
+        const { wind, dist } = idw(lat, lon);
+        const c = windColorRGB(wind);
+        const idx = (y * W + x) * 4;
+        let alpha;
+        if (dist < 1) alpha = 175;
+        else if (dist < 3.5) alpha = Math.round(175 * Math.pow(1 - (dist - 1) / 2.5, 2));
+        else alpha = 0;
+        imgData.data[idx]     = c.r;
+        imgData.data[idx + 1] = c.g;
+        imgData.data[idx + 2] = c.b;
+        imgData.data[idx + 3] = alpha;
+      }
+    }
+    ctx.putImageData(imgData, 0, 0);
+
+    /* Blur suave para transiciones */
+    const smooth = document.createElement('canvas');
+    smooth.width = W;
+    smooth.height = H;
+    const sCtx = smooth.getContext('2d');
+    sCtx.filter = 'blur(10px)';
+    sCtx.drawImage(canvas, 0, 0);
+    sCtx.filter = 'blur(5px)';
+    sCtx.globalAlpha = 0.55;
+    sCtx.drawImage(canvas, 0, 0);
+    sCtx.filter = 'none';
+    sCtx.globalAlpha = 0.4;
+    sCtx.drawImage(canvas, 0, 0);
+    sCtx.globalAlpha = 1.0;
+
+    const overlay = L.imageOverlay(smooth.toDataURL(), bounds, { opacity: 0.82 }).addTo(map);
+    return () => map.removeLayer(overlay);
   }, [points, map]);
   return null;
 }
@@ -94,14 +182,17 @@ function App() {
       .catch((err) => console.error('Error cargando data.json:', err));
   }, []);
 
+  const normalize = (str) =>
+    str?.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') ?? '';
+
   const filteredData = useMemo(() => {
-    const term = activeFilter.trim().toLowerCase();
+    const term = normalize(activeFilter.trim());
     if (!term) return data;
     return data.filter(
       (s) =>
-        s.ICAO?.toLowerCase().includes(term) ||
-        s.Estación?.toLowerCase().includes(term) ||
-        s.Provincia?.toLowerCase().includes(term)
+        normalize(s.ICAO).includes(term) ||
+        normalize(s.Estación).includes(term) ||
+        normalize(s.Provincia).includes(term)
     );
   }, [data, activeFilter]);
 
@@ -184,17 +275,17 @@ function App() {
           {mapType === 'bubble' && <BubbleLayer stations={filteredData} />}
         </MapContainer>
 
-        {/* Legend */}
+        {/* Legend — misma paleta para ambos mapas */}
         <div className="legend">
           <strong>Viento (km/h)</strong>
           <div className="legend-items">
             {[
-              { label: '0', color: '#313695' },
-              { label: '8', color: '#4575b4' },
-              { label: '13', color: '#fee090' },
-              { label: '18', color: '#fdae61' },
-              { label: '22', color: '#f46d43' },
-              { label: '27+', color: '#a50026' },
+              { label: '0',   color: '#4285f4' },
+              { label: '8',   color: '#00bcd4' },
+              { label: '13',  color: '#4caf50' },
+              { label: '18',  color: '#ffc107' },
+              { label: '22',  color: '#ff5722' },
+              { label: '27+', color: '#d32f2f' },
             ].map((s) => (
               <div key={s.label} className="legend-item">
                 <span className="legend-swatch" style={{ background: s.color }} />

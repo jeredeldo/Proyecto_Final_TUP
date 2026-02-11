@@ -159,9 +159,10 @@ python limpieza_pandas.py
 
 ---
 
-## 👤 Autor
+## � Autores
 
-**Jerónimo Deldo** — [@jeredeldo](https://github.com/jeredeldo)
+- **Jeremías Del Do** — [@jeredeldo](https://github.com/jeredeldo)
+- **Ezequiel F. Osuna** — [@Ezefosuna](https://github.com/Ezefosuna)
 
 ---
 

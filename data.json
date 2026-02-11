@@ -1,0 +1,450 @@
+[
+  {
+    "ICAO": "SASQ",
+    "Estación": "LA QUIACA OBSERVATORIO",
+    "viento_promedio": 6.583333333333333,
+    "lat": -22.1,
+    "lon": -65.6,
+    "Provincia": "JUJUY"
+  },
+  {
+    "ICAO": "SAST",
+    "Estación": "TARTAGAL AERO",
+    "viento_promedio": 8.133333333333333,
+    "lat": -22.6,
+    "lon": -63.783333,
+    "Provincia": "SALTA"
+  },
+  {
+    "ICAO": "SASJ",
+    "Estación": "JUJUY AERO",
+    "viento_promedio": 9.091666666666669,
+    "lat": -24.383333,
+    "lon": -65.083333,
+    "Provincia": "JUJUY"
+  },
+  {
+    "ICAO": "SASA",
+    "Estación": "SALTA AERO",
+    "viento_promedio": 6.974999999999999,
+    "lat": -24.833333,
+    "lon": -65.466667,
+    "Provincia": "SALTA"
+  },
+  {
+    "ICAO": "SATK",
+    "Estación": "LAS LOMITAS",
+    "viento_promedio": 5.375,
+    "lat": -24.7,
+    "lon": -60.583333,
+    "Provincia": "FORMOSA"
+  },
+  {
+    "ICAO": "SARI",
+    "Estación": "IGUAZÚ AERO",
+    "viento_promedio": 9.691666666666666,
+    "lat": -25.716667,
+    "lon": -54.466667,
+    "Provincia": "MISIONES"
+  },
+  {
+    "ICAO": "SANT",
+    "Estación": "TUCUMÁN AERO",
+    "viento_promedio": 8.716666666666667,
+    "lat": -26.833333,
+    "lon": -65.1,
+    "Provincia": "TUCUMAN"
+  },
+  {
+    "ICAO": "SANE",
+    "Estación": "SANTIAGO DEL ESTERO AERO",
+    "viento_promedio": 8.716666666666667,
+    "lat": -27.75,
+    "lon": -64.283333,
+    "Provincia": "SANTIAGO DEL ESTERO"
+  },
+  {
+    "ICAO": "SARF",
+    "Estación": "FORMOSA AERO",
+    "viento_promedio": 12.65,
+    "lat": -26.2,
+    "lon": -58.216667,
+    "Provincia": "FORMOSA"
+  },
+  {
+    "ICAO": "SARC",
+    "Estación": "CORRIENTES AERO",
+    "viento_promedio": 12.025,
+    "lat": -27.433333,
+    "lon": -58.75,
+    "Provincia": "CORRIENTES"
+  },
+  {
+    "ICAO": "SARP",
+    "Estación": "POSADAS AERO",
+    "viento_promedio": 10.283333333333337,
+    "lat": -27.383333,
+    "lon": -55.966667,
+    "Provincia": "MISIONES"
+  },
+  {
+    "ICAO": "SANC",
+    "Estación": "CATAMARCA AERO",
+    "viento_promedio": 18.175,
+    "lat": -28.583333,
+    "lon": -65.75,
+    "Provincia": "CATAMARCA"
+  },
+  {
+    "ICAO": "SACV",
+    "Estación": "VILLA DE MARÍA DEL RÍO SECO",
+    "viento_promedio": 5.600000000000001,
+    "lat": -29.9,
+    "lon": -63.716667,
+    "Provincia": "CORDOBA"
+  },
+  {
+    "ICAO": "SATR",
+    "Estación": "RECONQUISTA AERO",
+    "viento_promedio": 12.7,
+    "lat": -29.2,
+    "lon": -59.683333,
+    "Provincia": "SANTA FE"
+  },
+  {
+    "ICAO": "SARL",
+    "Estación": "PASO DE LOS LIBRES AERO",
+    "viento_promedio": 16.48333333333333,
+    "lat": -29.683333,
+    "lon": -57.133333,
+    "Provincia": "CORRIENTES"
+  },
+  {
+    "ICAO": "SANU",
+    "Estación": "SAN JUAN AERO",
+    "viento_promedio": 13.324999999999998,
+    "lat": -31.566667,
+    "lon": -68.416667,
+    "Provincia": "SAN JUAN"
+  },
+  {
+    "ICAO": "SACT",
+    "Estación": "CHAMICAL AERO",
+    "viento_promedio": 6.833333333333333,
+    "lat": -30.333333,
+    "lon": -66.283333,
+    "Provincia": "LA RIOJA"
+  },
+  {
+    "ICAO": "SAOD",
+    "Estación": "VILLA DOLORES AERO",
+    "viento_promedio": 10.733333333333334,
+    "lat": -31.95,
+    "lon": -65.133333,
+    "Provincia": "CORDOBA"
+  },
+  {
+    "ICAO": "SACO",
+    "Estación": "CÓRDOBA AERO",
+    "viento_promedio": 12.85,
+    "lat": -31.283333,
+    "lon": -64.2,
+    "Provincia": "CORDOBA"
+  },
+  {
+    "ICAO": "SACK",
+    "Estación": "CÓRDOBA OBSERVATORIO",
+    "viento_promedio": 7.699999999999999,
+    "lat": -31.416667,
+    "lon": -64.183333,
+    "Provincia": "CORDOBA"
+  },
+  {
+    "ICAO": "SAAV",
+    "Estación": "SAUCE VIEJO AERO",
+    "viento_promedio": 12.625,
+    "lat": -31.7,
+    "lon": -60.8,
+    "Provincia": "SANTA FE"
+  },
+  {
+    "ICAO": "SAAP",
+    "Estación": "PARANÁ AERO",
+    "viento_promedio": 11.941666666666668,
+    "lat": -31.783333,
+    "lon": -60.483333,
+    "Provincia": "ENTRE RIOS"
+  },
+  {
+    "ICAO": "SARM",
+    "Estación": "MONTE CASEROS AERO",
+    "viento_promedio": 11.866666666666667,
+    "lat": -30.25,
+    "lon": -57.633333,
+    "Provincia": "CORRIENTES"
+  },
+  {
+    "ICAO": "SAOU",
+    "Estación": "SAN LUIS AERO",
+    "viento_promedio": 15.608333333333334,
+    "lat": -33.266667,
+    "lon": -66.35,
+    "Provincia": "SAN LUIS"
+  },
+  {
+    "ICAO": "SAOR",
+    "Estación": "VILLA REYNOLDS AERO",
+    "viento_promedio": 11.308333333333332,
+    "lat": -33.716667,
+    "lon": -65.366667,
+    "Provincia": "SAN LUIS"
+  },
+  {
+    "ICAO": "SAOC",
+    "Estación": "RÍO CUARTO AERO",
+    "viento_promedio": 17.733333333333334,
+    "lat": -33.083333,
+    "lon": -64.266667,
+    "Provincia": "CORDOBA"
+  },
+  {
+    "ICAO": "SAAR",
+    "Estación": "ROSARIO AERO",
+    "viento_promedio": 12.308333333333332,
+    "lat": -32.9,
+    "lon": -60.766667,
+    "Provincia": "SANTA FE"
+  },
+  {
+    "ICAO": "SAAG",
+    "Estación": "GUALEGUAYCHÚ AERO",
+    "viento_promedio": 11.458333333333334,
+    "lat": -33.0,
+    "lon": -58.6,
+    "Provincia": "ENTRE RIOS"
+  },
+  {
+    "ICAO": "SAMM",
+    "Estación": "MALARGÜE AERO",
+    "viento_promedio": 10.833333333333334,
+    "lat": -35.466667,
+    "lon": -69.583333,
+    "Provincia": "MENDOZA"
+  },
+  {
+    "ICAO": "SAMR",
+    "Estación": "SAN RAFAEL AERO",
+    "viento_promedio": 10.175,
+    "lat": -34.583333,
+    "lon": -68.4,
+    "Provincia": "MENDOZA"
+  },
+  {
+    "ICAO": "SAOL",
+    "Estación": "LABOULAYE AERO",
+    "viento_promedio": 9.975,
+    "lat": -34.116667,
+    "lon": -63.366667,
+    "Provincia": "CORDOBA"
+  },
+  {
+    "ICAO": "SAAJ",
+    "Estación": "JUNÍN AERO",
+    "viento_promedio": 14.675000000000002,
+    "lat": -34.55,
+    "lon": -60.916667,
+    "Provincia": "BUENOS AIRES"
+  },
+  {
+    "ICAO": "SAZX",
+    "Estación": "NUEVE DE JULIO",
+    "viento_promedio": 8.833333333333334,
+    "lat": -35.433333,
+    "lon": -60.866667,
+    "Provincia": "BUENOS AIRES"
+  },
+  {
+    "ICAO": "SADF",
+    "Estación": "SAN FERNANDO AERO*",
+    "viento_promedio": 11.341666666666669,
+    "lat": -34.45,
+    "lon": -58.583333,
+    "Provincia": "BUENOS AIRES"
+  },
+  {
+    "ICAO": "SADP",
+    "Estación": "EL PALOMAR AERO",
+    "viento_promedio": 10.858333333333333,
+    "lat": -34.6,
+    "lon": -58.6,
+    "Provincia": "BUENOS AIRES"
+  },
+  {
+    "ICAO": "SAEZ",
+    "Estación": "EZEIZA AERO",
+    "viento_promedio": 12.033333333333331,
+    "lat": -34.816667,
+    "lon": -58.533333,
+    "Provincia": "BUENOS AIRES"
+  },
+  {
+    "ICAO": "SABE",
+    "Estación": "AEROPARQUE AERO",
+    "viento_promedio": 15.041666666666666,
+    "lat": -34.55,
+    "lon": -58.416667,
+    "Provincia": "CAPITAL FEDERAL"
+  },
+  {
+    "ICAO": "SABA",
+    "Estación": "BUENOS AIRES OBSERVATORIO",
+    "viento_promedio": 8.316666666666666,
+    "lat": -34.583333,
+    "lon": -58.483333,
+    "Provincia": "CAPITAL FEDERAL"
+  },
+  {
+    "ICAO": "SAZR",
+    "Estación": "SANTA ROSA AERO",
+    "viento_promedio": 14.733333333333334,
+    "lat": -36.583333,
+    "lon": -64.266667,
+    "Provincia": "LA PAMPA"
+  },
+  {
+    "ICAO": "SAZT",
+    "Estación": "TANDIL AERO",
+    "viento_promedio": 13.4,
+    "lat": -37.233333,
+    "lon": -59.216667,
+    "Provincia": "BUENOS AIRES"
+  },
+  {
+    "ICAO": "SAZM",
+    "Estación": "MAR DEL PLATA AERO",
+    "viento_promedio": 14.958333333333334,
+    "lat": -37.916667,
+    "lon": -57.566667,
+    "Provincia": "BUENOS AIRES"
+  },
+  {
+    "ICAO": "SAZN",
+    "Estación": "NEUQUÉN AERO",
+    "viento_promedio": 9.750000000000002,
+    "lat": -38.95,
+    "lon": -68.133333,
+    "Provincia": "NEUQUEN"
+  },
+  {
+    "ICAO": "SAZB",
+    "Estación": "BAHÍA BLANCA AERO",
+    "viento_promedio": 18.225,
+    "lat": -38.7,
+    "lon": -62.15,
+    "Provincia": "BUENOS AIRES"
+  },
+  {
+    "ICAO": "SAZS",
+    "Estación": "BARILOCHE AERO",
+    "viento_promedio": 19.55,
+    "lat": -41.133333,
+    "lon": -71.15,
+    "Provincia": "RIO NEGRO"
+  },
+  {
+    "ICAO": "SAVQ",
+    "Estación": "MAQUINCHAO",
+    "viento_promedio": 13.583333333333334,
+    "lat": -41.233333,
+    "lon": -68.7,
+    "Provincia": "RIO NEGRO"
+  },
+  {
+    "ICAO": "SAVB",
+    "Estación": "EL BOLSÓN AERO*",
+    "viento_promedio": 5.825,
+    "lat": -41.95,
+    "lon": -71.533333,
+    "Provincia": "RIO NEGRO"
+  },
+  {
+    "ICAO": "SAVE",
+    "Estación": "ESQUEL AERO",
+    "viento_promedio": 15.733333333333334,
+    "lat": -42.9,
+    "lon": -71.133333,
+    "Provincia": "CHUBUT"
+  },
+  {
+    "ICAO": "SAVT",
+    "Estación": "TRELEW AERO",
+    "viento_promedio": 17.258333333333333,
+    "lat": -43.2,
+    "lon": -65.266667,
+    "Provincia": "CHUBUT"
+  },
+  {
+    "ICAO": "SAWP",
+    "Estación": "PERITO MORENO AERO",
+    "viento_promedio": 26.916666666666668,
+    "lat": -46.533333,
+    "lon": -70.983333,
+    "Provincia": "SANTA CRUZ"
+  },
+  {
+    "ICAO": "SAVC",
+    "Estación": "COMODORO RIVADAVIA AERO",
+    "viento_promedio": 20.266666666666666,
+    "lat": -45.783333,
+    "lon": -67.45,
+    "Provincia": "CHUBUT"
+  },
+  {
+    "ICAO": "SAWC",
+    "Estación": "EL CALAFATE AERO*",
+    "viento_promedio": 17.558333333333334,
+    "lat": -50.283333,
+    "lon": -72.05,
+    "Provincia": "SANTA CRUZ"
+  },
+  {
+    "ICAO": "SAWJ",
+    "Estación": "SAN JULIÁN AERO",
+    "viento_promedio": 25.88333333333333,
+    "lat": -49.3,
+    "lon": -67.8,
+    "Provincia": "SANTA CRUZ"
+  },
+  {
+    "ICAO": "SAWG",
+    "Estación": "RÍO GALLEGOS AERO",
+    "viento_promedio": 22.375000000000004,
+    "lat": -51.6,
+    "lon": -69.3,
+    "Provincia": "SANTA CRUZ"
+  },
+  {
+    "ICAO": "SAWE",
+    "Estación": "RÍO GRANDE B.A.",
+    "viento_promedio": 23.60833333333333,
+    "lat": -53.766667,
+    "lon": -67.75,
+    "Provincia": "TIERRA DEL FUEGO"
+  },
+  {
+    "ICAO": "SAWH",
+    "Estación": "USHUAIA AERO*",
+    "viento_promedio": 22.666666666666668,
+    "lat": -54.833333,
+    "lon": -68.3,
+    "Provincia": "TIERRA DEL FUEGO"
+  },
+  {
+    "ICAO": "SAYO",
+    "Estación": "BASE ORCADAS",
+    "viento_promedio": 21.65833333333333,
+    "lat": -60.733333,
+    "lon": -44.733333,
+    "Provincia": "ANTARTIDA"
+  }
+]

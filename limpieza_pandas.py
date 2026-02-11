@@ -3,6 +3,8 @@ import numpy as np
 import requests
 from io import StringIO
 import unicodedata
+import sqlalchemy
+from sqlalchemy import create_engine
 
 def normalize_station(name):
     if pd.isna(name) or not name:
@@ -14,6 +16,9 @@ def normalize_station(name):
         name = name.replace(item, '')
     name = name.replace('  ', ' ').strip()
     return name
+
+# Imprimir versiones para depuración
+print(f"Iniciando... (Pandas: {pd.__version__}, SQLAlchemy: {sqlalchemy.__version__})")
 
 # URLs nuevas
 url_smn = "https://gist.githubusercontent.com/jeredeldo/80943d8e022f58e387d578b4e75ea680/raw/315aaf51efd7844a347f73d7449183cf9c0393cc/SMN.CSV"
@@ -70,3 +75,30 @@ print(df_merged.head(15))
 # Guardar
 df_merged.to_csv("estaciones_viento_con_icao_coords.csv", index=False, encoding='utf-8-sig')
 print("\nGuardado en: estaciones_viento_con_icao_coords.csv")
+
+# ── Guardar en PostgreSQL ───────────────────────────────────────────────────
+# TODO: Ajustá estos valores según tu configuración de PostgreSQL
+DB_USER = "postgres"
+DB_PASS = "postgres" # <--- Cambiá esto por tu contraseña real
+DB_HOST = "localhost"
+DB_PORT = "5432"
+DB_NAME = "estaciones" # <--- Asegurate de crear esta base de datos primero
+
+DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+try:
+    print(f"\nGuardando datos en PostgreSQL ({DB_NAME})...")
+    engine = create_engine(DATABASE_URL)
+    # Usamos una conexión explícita (mejor práctica para SQLAlchemy 2.0)
+    with engine.begin() as connection:
+        df_merged.to_sql('estaciones', connection, if_exists='replace', index=False)
+    print("¡Éxito! Tabla 'estaciones' creada/actualizada.")
+except Exception as e:
+    print(f"\nNo se pudo guardar en la base de datos: {e}")
+    if "multiple values for argument 'schema'" in str(e):
+        print("ERROR DE COMPATIBILIDAD: Pandas no se lleva bien con SQLAlchemy 2.0 en este entorno.")
+        print("SOLUCIÓN RÁPIDA: Instalá una versión anterior de SQLAlchemy.")
+        print("Ejecutá: pip install \"sqlalchemy<2.0\"")
+    else:
+        print("Recordá instalar: pip install sqlalchemy psycopg2-binary")
+        print(f"Y crear la base de datos '{DB_NAME}' en tu servidor PostgreSQL.")

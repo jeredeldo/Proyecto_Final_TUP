@@ -137,7 +137,7 @@ function HeatmapLayer({ points }) {
 }
 
 /* ─── BubbleLayer ─── */
-function BubbleLayer({ stations }) {
+function BubbleLayer({ stations, onStationClick }) {
   return (
     <>
       {stations.map((station, idx) => {
@@ -152,6 +152,7 @@ function BubbleLayer({ stations }) {
             weight={1.5}
             opacity={1}
             fillOpacity={0.82}
+            eventHandlers={{ click: () => onStationClick(station) }}
           >
             <Tooltip direction="top" offset={[0, -8]}>
               <div style={{ fontSize: 13, lineHeight: 1.5 }}>
@@ -168,6 +169,100 @@ function BubbleLayer({ stations }) {
   );
 }
 
+/* ─── MiniBarChart mensual ─── */
+const MONTH_LABELS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+
+function MonthlyChart({ mensual }) {
+  if (!mensual) return null;
+  const vals = MONTH_LABELS.map(m => mensual[m] ?? 0);
+  const max = Math.max(...vals, 1);
+  return (
+    <div className="monthly-chart">
+      {MONTH_LABELS.map((m, i) => (
+        <div key={m} className="monthly-bar-col">
+          <span className="monthly-val">{vals[i] ? vals[i].toFixed(1) : '—'}</span>
+          <div className="monthly-bar-bg">
+            <div
+              className="monthly-bar-fill"
+              style={{
+                height: `${(vals[i] / max) * 100}%`,
+                background: windColor(vals[i]),
+              }}
+            />
+          </div>
+          <span className="monthly-label">{m}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ─── StationDetail panel ─── */
+function StationDetail({ station, onClose }) {
+  if (!station) return null;
+  const color = windColor(station.viento_promedio);
+  const mensualVals = station.mensual
+    ? MONTH_LABELS.map(m => station.mensual[m]).filter(v => v != null)
+    : [];
+  const mesMax = station.mensual
+    ? MONTH_LABELS.reduce((best, m) => (!best || (station.mensual[m] ?? 0) > (station.mensual[best] ?? 0)) ? m : best, null)
+    : null;
+  const mesMin = station.mensual
+    ? MONTH_LABELS.reduce((best, m) => (!best || (station.mensual[m] ?? Infinity) < (station.mensual[best] ?? Infinity)) ? m : best, null)
+    : null;
+
+  return (
+    <div className="detail-overlay" onClick={onClose}>
+      <div className="detail-panel" onClick={e => e.stopPropagation()}>
+        <button className="detail-close" onClick={onClose}>✕</button>
+
+        <div className="detail-header">
+          <span className="detail-icao">{station.ICAO}</span>
+          <span className="detail-speed" style={{ color }}>
+            {station.viento_promedio.toFixed(1)} km/h
+          </span>
+        </div>
+
+        <h2 className="detail-name">{station.Estación}</h2>
+
+        <div className="detail-grid">
+          <div className="detail-item">
+            <span className="detail-label">Provincia</span>
+            <span className="detail-value">{station.Provincia}</span>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">Coordenadas</span>
+            <span className="detail-value">{station.lat.toFixed(4)}°, {station.lon.toFixed(4)}°</span>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">Altura</span>
+            <span className="detail-value">{station.Altura_m != null ? `${station.Altura_m} m s.n.m.` : 'Sin dato'}</span>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">Promedio anual (1991–2020)</span>
+            <span className="detail-value" style={{ color, fontWeight: 700 }}>{station.viento_promedio.toFixed(2)} km/h</span>
+          </div>
+          {mesMax && (
+            <div className="detail-item">
+              <span className="detail-label">Mes más ventoso</span>
+              <span className="detail-value">{mesMax} — {station.mensual[mesMax]?.toFixed(1)} km/h</span>
+            </div>
+          )}
+          {mesMin && (
+            <div className="detail-item">
+              <span className="detail-label">Mes menos ventoso</span>
+              <span className="detail-value">{mesMin} — {station.mensual[mesMin]?.toFixed(1)} km/h</span>
+            </div>
+          )}
+        </div>
+
+        <h3 className="detail-section-title">Promedio mensual 1991 – 2020 (km/h)</h3>
+        <MonthlyChart mensual={station.mensual} />
+      </div>
+    </div>
+  );
+}
+
 /* ─── App ─── */
 function App() {
   const [data, setData] = useState([]);
@@ -175,6 +270,7 @@ function App() {
   const [activeFilter, setActiveFilter] = useState('');
   const [mapType, setMapType] = useState('bubble');
   const [darkMode, setDarkMode] = useState(true);
+  const [selectedStation, setSelectedStation] = useState(null);
 
   useEffect(() => {
     fetch(process.env.PUBLIC_URL + '/data.json')
@@ -285,7 +381,7 @@ function App() {
             attribution='&copy; CARTO'
           />
           {mapType === 'heatmap' && <HeatmapLayer points={filteredData} />}
-          {mapType === 'bubble' && <BubbleLayer stations={filteredData} />}
+          {mapType === 'bubble' && <BubbleLayer stations={filteredData} onStationClick={setSelectedStation} />}
         </MapContainer>
 
         {/* Legend — misma paleta para ambos mapas */}
@@ -313,6 +409,9 @@ function App() {
       <footer className="app-footer">
         Datos: Servicio Meteorológico Nacional (SMN) — Proyecto Final TUP
       </footer>
+
+      {/* Detail panel */}
+      <StationDetail station={selectedStation} onClose={() => setSelectedStation(null)} />
     </div>
   );
 }

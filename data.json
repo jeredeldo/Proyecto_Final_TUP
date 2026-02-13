@@ -2,66 +2,186 @@
   {
     "ICAO": "SASQ",
     "Estación": "LA QUIACA OBSERVATORIO",
-    "viento_promedio": 6.583333333333333,
+    "viento_promedio": 6.58,
     "lat": -22.1,
     "lon": -65.6,
-    "Provincia": "JUJUY"
+    "Altura_m": 3459.0,
+    "Provincia": "JUJUY",
+    "mensual": {
+      "Ene": 6.5,
+      "Feb": 6.8,
+      "Mar": 6.7,
+      "Abr": 5.5,
+      "May": 4.8,
+      "Jun": 5.5,
+      "Jul": 5.9,
+      "Ago": 6.7,
+      "Sep": 7.9,
+      "Oct": 7.9,
+      "Nov": 7.7,
+      "Dic": 7.1
+    }
   },
   {
     "ICAO": "SAST",
     "Estación": "TARTAGAL AERO",
-    "viento_promedio": 8.133333333333333,
+    "viento_promedio": 8.13,
     "lat": -22.6,
     "lon": -63.783333,
-    "Provincia": "SALTA"
+    "Altura_m": 450.0,
+    "Provincia": "SALTA",
+    "mensual": {
+      "Ene": 8.0,
+      "Feb": 7.5,
+      "Mar": 6.6,
+      "Abr": 6.5,
+      "May": 6.3,
+      "Jun": 6.8,
+      "Jul": 7.3,
+      "Ago": 9.3,
+      "Sep": 10.1,
+      "Oct": 10.7,
+      "Nov": 9.8,
+      "Dic": 8.7
+    }
   },
   {
     "ICAO": "SASJ",
     "Estación": "JUJUY AERO",
-    "viento_promedio": 9.091666666666669,
+    "viento_promedio": 9.09,
     "lat": -24.383333,
     "lon": -65.083333,
-    "Provincia": "JUJUY"
+    "Altura_m": 909.0,
+    "Provincia": "JUJUY",
+    "mensual": {
+      "Ene": 8.7,
+      "Feb": 8.3,
+      "Mar": 7.9,
+      "Abr": 7.8,
+      "May": 7.3,
+      "Jun": 8.2,
+      "Jul": 9.1,
+      "Ago": 11.3,
+      "Sep": 10.8,
+      "Oct": 10.4,
+      "Nov": 10.4,
+      "Dic": 8.9
+    }
   },
   {
     "ICAO": "SASA",
     "Estación": "SALTA AERO",
-    "viento_promedio": 6.974999999999999,
+    "viento_promedio": 6.97,
     "lat": -24.833333,
     "lon": -65.466667,
-    "Provincia": "SALTA"
+    "Altura_m": 1221.0,
+    "Provincia": "SALTA",
+    "mensual": {
+      "Ene": 6.8,
+      "Feb": 6.4,
+      "Mar": 6.1,
+      "Abr": 6.0,
+      "May": 5.8,
+      "Jun": 6.1,
+      "Jul": 6.5,
+      "Ago": 6.9,
+      "Sep": 7.9,
+      "Oct": 9.0,
+      "Nov": 8.6,
+      "Dic": 7.6
+    }
   },
   {
     "ICAO": "SATK",
     "Estación": "LAS LOMITAS",
-    "viento_promedio": 5.375,
+    "viento_promedio": 5.38,
     "lat": -24.7,
     "lon": -60.583333,
-    "Provincia": "FORMOSA"
+    "Altura_m": 130.0,
+    "Provincia": "FORMOSA",
+    "mensual": {
+      "Ene": 5.4,
+      "Feb": 5.2,
+      "Mar": 4.7,
+      "Abr": 4.6,
+      "May": 4.5,
+      "Jun": 4.8,
+      "Jul": 5.2,
+      "Ago": 6.3,
+      "Sep": 6.1,
+      "Oct": 6.6,
+      "Nov": 5.7,
+      "Dic": 5.4
+    }
   },
   {
     "ICAO": "SARI",
     "Estación": "IGUAZÚ AERO",
-    "viento_promedio": 9.691666666666666,
+    "viento_promedio": 9.69,
     "lat": -25.716667,
     "lon": -54.466667,
-    "Provincia": "MISIONES"
+    "Altura_m": 270.0,
+    "Provincia": "MISIONES",
+    "mensual": {
+      "Ene": 9.1,
+      "Feb": 9.0,
+      "Mar": 8.4,
+      "Abr": 8.7,
+      "May": 8.9,
+      "Jun": 9.5,
+      "Jul": 10.1,
+      "Ago": 11.1,
+      "Sep": 10.9,
+      "Oct": 10.8,
+      "Nov": 10.1,
+      "Dic": 9.7
+    }
   },
   {
     "ICAO": "SANT",
     "Estación": "TUCUMÁN AERO",
-    "viento_promedio": 8.716666666666667,
+    "viento_promedio": 8.72,
     "lat": -26.833333,
     "lon": -65.1,
-    "Provincia": "TUCUMAN"
+    "Altura_m": 450.0,
+    "Provincia": "TUCUMAN",
+    "mensual": {
+      "Ene": 9.2,
+      "Feb": 8.6,
+      "Mar": 7.7,
+      "Abr": 7.7,
+      "May": 7.0,
+      "Jun": 6.8,
+      "Jul": 7.5,
+      "Ago": 8.8,
+      "Sep": 10.0,
+      "Oct": 10.6,
+      "Nov": 10.7,
+      "Dic": 10.0
+    }
   },
   {
     "ICAO": "SANE",
     "Estación": "SANTIAGO DEL ESTERO AERO",
-    "viento_promedio": 8.716666666666667,
+    "viento_promedio": 8.72,
     "lat": -27.75,
     "lon": -64.283333,
-    "Provincia": "SANTIAGO DEL ESTERO"
+    "Altura_m": 199.0,
+    "Provincia": "SANTIAGO DEL ESTERO",
+    "mensual": {
+      "Ene": 9.2,
+      "Feb": 8.6,
+      "Mar": 7.7,
+      "Abr": 7.7,
+      "May": 7.0,
+      "Jun": 6.8,
+      "Jul": 7.5,
+      "Ago": 8.8,
+      "Sep": 10.0,
+      "Oct": 10.6,
+      "Nov": 10.7,
+      "Dic": 10.0
+    }
   },
   {
     "ICAO": "SARF",
@@ -69,39 +189,114 @@
     "viento_promedio": 12.65,
     "lat": -26.2,
     "lon": -58.216667,
-    "Provincia": "FORMOSA"
+    "Altura_m": 60.0,
+    "Provincia": "FORMOSA",
+    "mensual": {
+      "Ene": 12.4,
+      "Feb": 11.5,
+      "Mar": 10.8,
+      "Abr": 10.5,
+      "May": 11.2,
+      "Jun": 12.2,
+      "Jul": 12.1,
+      "Ago": 14.8,
+      "Sep": 14.3,
+      "Oct": 15.4,
+      "Nov": 13.7,
+      "Dic": 12.9
+    }
   },
   {
     "ICAO": "SARC",
     "Estación": "CORRIENTES AERO",
-    "viento_promedio": 12.025,
+    "viento_promedio": 12.03,
     "lat": -27.433333,
     "lon": -58.75,
-    "Provincia": "CORRIENTES"
+    "Altura_m": 62.0,
+    "Provincia": "CORRIENTES",
+    "mensual": {
+      "Ene": 11.6,
+      "Feb": 11.4,
+      "Mar": 11.2,
+      "Abr": 10.3,
+      "May": 10.7,
+      "Jun": 10.7,
+      "Jul": 11.2,
+      "Ago": 13.7,
+      "Sep": 13.8,
+      "Oct": 14.5,
+      "Nov": 13.0,
+      "Dic": 12.2
+    }
   },
   {
     "ICAO": "SARP",
     "Estación": "POSADAS AERO",
-    "viento_promedio": 10.283333333333337,
+    "viento_promedio": 10.28,
     "lat": -27.383333,
     "lon": -55.966667,
-    "Provincia": "MISIONES"
+    "Altura_m": 125.0,
+    "Provincia": "MISIONES",
+    "mensual": {
+      "Ene": 9.8,
+      "Feb": 9.7,
+      "Mar": 9.3,
+      "Abr": 9.0,
+      "May": 9.1,
+      "Jun": 9.8,
+      "Jul": 10.0,
+      "Ago": 11.5,
+      "Sep": 11.4,
+      "Oct": 12.2,
+      "Nov": 11.2,
+      "Dic": 10.4
+    }
   },
   {
     "ICAO": "SANC",
     "Estación": "CATAMARCA AERO",
-    "viento_promedio": 18.175,
+    "viento_promedio": 18.17,
     "lat": -28.583333,
     "lon": -65.75,
-    "Provincia": "CATAMARCA"
+    "Altura_m": 464.0,
+    "Provincia": "CATAMARCA",
+    "mensual": {
+      "Ene": 22.0,
+      "Feb": 19.8,
+      "Mar": 18.9,
+      "Abr": 15.5,
+      "May": 13.0,
+      "Jun": 11.5,
+      "Jul": 12.4,
+      "Ago": 16.6,
+      "Sep": 19.1,
+      "Oct": 21.7,
+      "Nov": 24.0,
+      "Dic": 23.6
+    }
   },
   {
     "ICAO": "SACV",
     "Estación": "VILLA DE MARÍA DEL RÍO SECO",
-    "viento_promedio": 5.600000000000001,
+    "viento_promedio": 5.6,
     "lat": -29.9,
     "lon": -63.716667,
-    "Provincia": "CORDOBA"
+    "Altura_m": 341.0,
+    "Provincia": "CORDOBA",
+    "mensual": {
+      "Ene": 6.4,
+      "Feb": 4.9,
+      "Mar": 4.3,
+      "Abr": 4.0,
+      "May": 4.2,
+      "Jun": 4.4,
+      "Jul": 5.1,
+      "Ago": 6.2,
+      "Sep": 6.6,
+      "Oct": 7.6,
+      "Nov": 7.0,
+      "Dic": 6.5
+    }
   },
   {
     "ICAO": "SATR",
@@ -109,39 +304,114 @@
     "viento_promedio": 12.7,
     "lat": -29.2,
     "lon": -59.683333,
-    "Provincia": "SANTA FE"
+    "Altura_m": 53.0,
+    "Provincia": "SANTA FE",
+    "mensual": {
+      "Ene": 12.3,
+      "Feb": 11.6,
+      "Mar": 10.8,
+      "Abr": 10.4,
+      "May": 10.8,
+      "Jun": 11.0,
+      "Jul": 12.2,
+      "Ago": 15.1,
+      "Sep": 15.4,
+      "Oct": 15.9,
+      "Nov": 14.4,
+      "Dic": 12.5
+    }
   },
   {
     "ICAO": "SARL",
     "Estación": "PASO DE LOS LIBRES AERO",
-    "viento_promedio": 16.48333333333333,
+    "viento_promedio": 16.48,
     "lat": -29.683333,
     "lon": -57.133333,
-    "Provincia": "CORRIENTES"
+    "Altura_m": 70.0,
+    "Provincia": "CORRIENTES",
+    "mensual": {
+      "Ene": 16.5,
+      "Feb": 15.8,
+      "Mar": 15.5,
+      "Abr": 14.9,
+      "May": 14.7,
+      "Jun": 14.5,
+      "Jul": 15.4,
+      "Ago": 17.9,
+      "Sep": 19.3,
+      "Oct": 19.7,
+      "Nov": 17.7,
+      "Dic": 15.9
+    }
   },
   {
     "ICAO": "SANU",
     "Estación": "SAN JUAN AERO",
-    "viento_promedio": 13.324999999999998,
+    "viento_promedio": 13.32,
     "lat": -31.566667,
     "lon": -68.416667,
-    "Provincia": "SAN JUAN"
+    "Altura_m": 598.0,
+    "Provincia": "SAN JUAN",
+    "mensual": {
+      "Ene": 15.3,
+      "Feb": 14.6,
+      "Mar": 13.0,
+      "Abr": 11.5,
+      "May": 9.7,
+      "Jun": 9.8,
+      "Jul": 10.4,
+      "Ago": 11.7,
+      "Sep": 13.7,
+      "Oct": 16.4,
+      "Nov": 17.2,
+      "Dic": 16.6
+    }
   },
   {
     "ICAO": "SACT",
     "Estación": "CHAMICAL AERO",
-    "viento_promedio": 6.833333333333333,
+    "viento_promedio": 6.83,
     "lat": -30.333333,
     "lon": -66.283333,
-    "Provincia": "LA RIOJA"
+    "Altura_m": 461.0,
+    "Provincia": "LA RIOJA",
+    "mensual": {
+      "Ene": 8.4,
+      "Feb": 6.9,
+      "Mar": 6.2,
+      "Abr": 5.0,
+      "May": 4.3,
+      "Jun": 4.1,
+      "Jul": 4.1,
+      "Ago": 6.0,
+      "Sep": 8.2,
+      "Oct": 10.1,
+      "Nov": 9.9,
+      "Dic": 8.8
+    }
   },
   {
     "ICAO": "SAOD",
     "Estación": "VILLA DOLORES AERO",
-    "viento_promedio": 10.733333333333334,
+    "viento_promedio": 10.73,
     "lat": -31.95,
     "lon": -65.133333,
-    "Provincia": "CORDOBA"
+    "Altura_m": 569.0,
+    "Provincia": "CORDOBA",
+    "mensual": {
+      "Ene": 10.9,
+      "Feb": 9.8,
+      "Mar": 10.1,
+      "Abr": 9.3,
+      "May": 9.2,
+      "Jun": 9.6,
+      "Jul": 9.8,
+      "Ago": 11.3,
+      "Sep": 11.5,
+      "Oct": 11.3,
+      "Nov": 12.9,
+      "Dic": 13.1
+    }
   },
   {
     "ICAO": "SACO",
@@ -149,167 +419,482 @@
     "viento_promedio": 12.85,
     "lat": -31.283333,
     "lon": -64.2,
-    "Provincia": "CORDOBA"
+    "Altura_m": 495.0,
+    "Provincia": "CORDOBA",
+    "mensual": {
+      "Ene": 12.6,
+      "Feb": 11.3,
+      "Mar": 11.5,
+      "Abr": 11.1,
+      "May": 11.0,
+      "Jun": 11.4,
+      "Jul": 11.9,
+      "Ago": 14.1,
+      "Sep": 14.9,
+      "Oct": 14.8,
+      "Nov": 15.2,
+      "Dic": 14.4
+    }
   },
   {
     "ICAO": "SACK",
     "Estación": "CÓRDOBA OBSERVATORIO",
-    "viento_promedio": 7.699999999999999,
+    "viento_promedio": 7.7,
     "lat": -31.416667,
     "lon": -64.183333,
-    "Provincia": "CORDOBA"
+    "Altura_m": 425.0,
+    "Provincia": "CORDOBA",
+    "mensual": {
+      "Ene": 8.5,
+      "Feb": 7.7,
+      "Mar": 7.6,
+      "Abr": 6.9,
+      "May": 6.0,
+      "Jun": 5.9,
+      "Jul": 6.5,
+      "Ago": 7.6,
+      "Sep": 8.5,
+      "Oct": 8.9,
+      "Nov": 9.3,
+      "Dic": 9.0
+    }
   },
   {
     "ICAO": "SAAV",
     "Estación": "SAUCE VIEJO AERO",
-    "viento_promedio": 12.625,
+    "viento_promedio": 12.62,
     "lat": -31.7,
     "lon": -60.8,
-    "Provincia": "SANTA FE"
+    "Altura_m": 18.0,
+    "Provincia": "SANTA FE",
+    "mensual": {
+      "Ene": 12.3,
+      "Feb": 11.4,
+      "Mar": 10.8,
+      "Abr": 11.0,
+      "May": 11.7,
+      "Jun": 11.8,
+      "Jul": 13.0,
+      "Ago": 14.4,
+      "Sep": 14.1,
+      "Oct": 14.6,
+      "Nov": 13.9,
+      "Dic": 12.5
+    }
   },
   {
     "ICAO": "SAAP",
     "Estación": "PARANÁ AERO",
-    "viento_promedio": 11.941666666666668,
+    "viento_promedio": 11.94,
     "lat": -31.783333,
     "lon": -60.483333,
-    "Provincia": "ENTRE RIOS"
+    "Altura_m": 78.0,
+    "Provincia": "ENTRE RIOS",
+    "mensual": {
+      "Ene": 11.9,
+      "Feb": 11.2,
+      "Mar": 9.8,
+      "Abr": 10.1,
+      "May": 10.4,
+      "Jun": 10.9,
+      "Jul": 11.4,
+      "Ago": 13.1,
+      "Sep": 13.8,
+      "Oct": 14.7,
+      "Nov": 13.5,
+      "Dic": 12.5
+    }
   },
   {
     "ICAO": "SARM",
     "Estación": "MONTE CASEROS AERO",
-    "viento_promedio": 11.866666666666667,
+    "viento_promedio": 11.87,
     "lat": -30.25,
     "lon": -57.633333,
-    "Provincia": "CORRIENTES"
+    "Altura_m": 54.0,
+    "Provincia": "CORRIENTES",
+    "mensual": {
+      "Ene": 11.2,
+      "Feb": 10.8,
+      "Mar": 10.4,
+      "Abr": 10.1,
+      "May": 10.5,
+      "Jun": 11.5,
+      "Jul": 12.2,
+      "Ago": 14.3,
+      "Sep": 14.2,
+      "Oct": 13.6,
+      "Nov": 12.2,
+      "Dic": 11.4
+    }
   },
   {
     "ICAO": "SAOU",
     "Estación": "SAN LUIS AERO",
-    "viento_promedio": 15.608333333333334,
+    "viento_promedio": 15.61,
     "lat": -33.266667,
     "lon": -66.35,
-    "Provincia": "SAN LUIS"
+    "Altura_m": 713.0,
+    "Provincia": "SAN LUIS",
+    "mensual": {
+      "Ene": 17.4,
+      "Feb": 15.9,
+      "Mar": 14.5,
+      "Abr": 13.6,
+      "May": 12.1,
+      "Jun": 13.4,
+      "Jul": 13.9,
+      "Ago": 15.6,
+      "Sep": 16.5,
+      "Oct": 18.4,
+      "Nov": 18.3,
+      "Dic": 17.7
+    }
   },
   {
     "ICAO": "SAOR",
     "Estación": "VILLA REYNOLDS AERO",
-    "viento_promedio": 11.308333333333332,
+    "viento_promedio": 11.31,
     "lat": -33.716667,
     "lon": -65.366667,
-    "Provincia": "SAN LUIS"
+    "Altura_m": 486.0,
+    "Provincia": "SAN LUIS",
+    "mensual": {
+      "Ene": 12.7,
+      "Feb": 11.0,
+      "Mar": 9.2,
+      "Abr": 9.2,
+      "May": 8.0,
+      "Jun": 7.8,
+      "Jul": 8.6,
+      "Ago": 11.2,
+      "Sep": 12.6,
+      "Oct": 16.3,
+      "Nov": 15.1,
+      "Dic": 14.0
+    }
   },
   {
     "ICAO": "SAOC",
     "Estación": "RÍO CUARTO AERO",
-    "viento_promedio": 17.733333333333334,
+    "viento_promedio": 17.73,
     "lat": -33.083333,
     "lon": -64.266667,
-    "Provincia": "CORDOBA"
+    "Altura_m": 421.0,
+    "Provincia": "CORDOBA",
+    "mensual": {
+      "Ene": 18.0,
+      "Feb": 15.7,
+      "Mar": 15.8,
+      "Abr": 15.4,
+      "May": 14.9,
+      "Jun": 14.4,
+      "Jul": 16.0,
+      "Ago": 18.5,
+      "Sep": 20.5,
+      "Oct": 21.5,
+      "Nov": 21.7,
+      "Dic": 20.4
+    }
   },
   {
     "ICAO": "SAAR",
     "Estación": "ROSARIO AERO",
-    "viento_promedio": 12.308333333333332,
+    "viento_promedio": 12.31,
     "lat": -32.9,
     "lon": -60.766667,
-    "Provincia": "SANTA FE"
+    "Altura_m": 25.0,
+    "Provincia": "SANTA FE",
+    "mensual": {
+      "Ene": 12.4,
+      "Feb": 11.4,
+      "Mar": 10.5,
+      "Abr": 10.7,
+      "May": 10.7,
+      "Jun": 10.6,
+      "Jul": 11.6,
+      "Ago": 12.8,
+      "Sep": 14.4,
+      "Oct": 15.3,
+      "Nov": 14.6,
+      "Dic": 12.7
+    }
   },
   {
     "ICAO": "SAAG",
     "Estación": "GUALEGUAYCHÚ AERO",
-    "viento_promedio": 11.458333333333334,
+    "viento_promedio": 11.46,
     "lat": -33.0,
     "lon": -58.6,
-    "Provincia": "ENTRE RIOS"
+    "Altura_m": 23.0,
+    "Provincia": "ENTRE RIOS",
+    "mensual": {
+      "Ene": 11.4,
+      "Feb": 10.5,
+      "Mar": 10.3,
+      "Abr": 9.9,
+      "May": 9.9,
+      "Jun": 11.0,
+      "Jul": 11.3,
+      "Ago": 12.9,
+      "Sep": 12.9,
+      "Oct": 12.4,
+      "Nov": 13.0,
+      "Dic": 12.0
+    }
   },
   {
     "ICAO": "SAMM",
     "Estación": "MALARGÜE AERO",
-    "viento_promedio": 10.833333333333334,
+    "viento_promedio": 10.83,
     "lat": -35.466667,
     "lon": -69.583333,
-    "Provincia": "MENDOZA"
+    "Altura_m": 1425.0,
+    "Provincia": "MENDOZA",
+    "mensual": {
+      "Ene": 10.4,
+      "Feb": 9.7,
+      "Mar": 8.8,
+      "Abr": 8.2,
+      "May": 9.4,
+      "Jun": 11.6,
+      "Jul": 11.4,
+      "Ago": 12.6,
+      "Sep": 12.2,
+      "Oct": 11.9,
+      "Nov": 12.1,
+      "Dic": 11.7
+    }
   },
   {
     "ICAO": "SAMR",
     "Estación": "SAN RAFAEL AERO",
-    "viento_promedio": 10.175,
+    "viento_promedio": 10.17,
     "lat": -34.583333,
     "lon": -68.4,
-    "Provincia": "MENDOZA"
+    "Altura_m": 748.0,
+    "Provincia": "MENDOZA",
+    "mensual": {
+      "Ene": 10.9,
+      "Feb": 10.1,
+      "Mar": 9.4,
+      "Abr": 8.6,
+      "May": 8.7,
+      "Jun": 10.1,
+      "Jul": 10.2,
+      "Ago": 11.2,
+      "Sep": 10.3,
+      "Oct": 10.4,
+      "Nov": 11.1,
+      "Dic": 11.1
+    }
   },
   {
     "ICAO": "SAOL",
     "Estación": "LABOULAYE AERO",
-    "viento_promedio": 9.975,
+    "viento_promedio": 9.97,
     "lat": -34.116667,
     "lon": -63.366667,
-    "Provincia": "CORDOBA"
+    "Altura_m": 137.0,
+    "Provincia": "CORDOBA",
+    "mensual": {
+      "Ene": 10.9,
+      "Feb": 8.0,
+      "Mar": 8.3,
+      "Abr": 8.2,
+      "May": 7.6,
+      "Jun": 6.7,
+      "Jul": 8.0,
+      "Ago": 10.6,
+      "Sep": 12.6,
+      "Oct": 13.6,
+      "Nov": 13.2,
+      "Dic": 12.0
+    }
   },
   {
     "ICAO": "SAAJ",
     "Estación": "JUNÍN AERO",
-    "viento_promedio": 14.675000000000002,
+    "viento_promedio": 14.68,
     "lat": -34.55,
     "lon": -60.916667,
-    "Provincia": "BUENOS AIRES"
+    "Altura_m": 81.0,
+    "Provincia": "BUENOS AIRES",
+    "mensual": {
+      "Ene": 14.4,
+      "Feb": 12.2,
+      "Mar": 12.8,
+      "Abr": 13.6,
+      "May": 13.2,
+      "Jun": 13.4,
+      "Jul": 14.4,
+      "Ago": 16.1,
+      "Sep": 16.8,
+      "Oct": 17.2,
+      "Nov": 16.8,
+      "Dic": 15.2
+    }
   },
   {
     "ICAO": "SAZX",
     "Estación": "NUEVE DE JULIO",
-    "viento_promedio": 8.833333333333334,
+    "viento_promedio": 8.83,
     "lat": -35.433333,
     "lon": -60.866667,
-    "Provincia": "BUENOS AIRES"
+    "Altura_m": 76.0,
+    "Provincia": "BUENOS AIRES",
+    "mensual": {
+      "Ene": 9.2,
+      "Feb": 7.9,
+      "Mar": 7.3,
+      "Abr": 7.8,
+      "May": 7.4,
+      "Jun": 7.7,
+      "Jul": 8.7,
+      "Ago": 9.8,
+      "Sep": 10.6,
+      "Oct": 9.7,
+      "Nov": 10.5,
+      "Dic": 9.4
+    }
   },
   {
     "ICAO": "SADF",
     "Estación": "SAN FERNANDO AERO*",
-    "viento_promedio": 11.341666666666669,
+    "viento_promedio": 11.34,
     "lat": -34.45,
     "lon": -58.583333,
-    "Provincia": "BUENOS AIRES"
+    "Altura_m": 5.0,
+    "Provincia": "BUENOS AIRES",
+    "mensual": {
+      "Ene": 12.8,
+      "Feb": 11.8,
+      "Mar": 10.6,
+      "Abr": 9.8,
+      "May": 9.0,
+      "Jun": 9.2,
+      "Jul": 9.8,
+      "Ago": 11.0,
+      "Sep": 12.9,
+      "Oct": 13.3,
+      "Nov": 13.3,
+      "Dic": 12.6
+    }
   },
   {
     "ICAO": "SADP",
     "Estación": "EL PALOMAR AERO",
-    "viento_promedio": 10.858333333333333,
+    "viento_promedio": 10.86,
     "lat": -34.6,
     "lon": -58.6,
-    "Provincia": "BUENOS AIRES"
+    "Altura_m": 12.0,
+    "Provincia": "BUENOS AIRES",
+    "mensual": {
+      "Ene": 12.0,
+      "Feb": 11.1,
+      "Mar": 10.2,
+      "Abr": 9.4,
+      "May": 8.7,
+      "Jun": 8.9,
+      "Jul": 9.6,
+      "Ago": 10.8,
+      "Sep": 12.9,
+      "Oct": 12.6,
+      "Nov": 12.3,
+      "Dic": 11.8
+    }
   },
   {
     "ICAO": "SAEZ",
     "Estación": "EZEIZA AERO",
-    "viento_promedio": 12.033333333333331,
+    "viento_promedio": 12.03,
     "lat": -34.816667,
     "lon": -58.533333,
-    "Provincia": "BUENOS AIRES"
+    "Altura_m": 20.0,
+    "Provincia": "BUENOS AIRES",
+    "mensual": {
+      "Ene": 13.2,
+      "Feb": 12.2,
+      "Mar": 11.2,
+      "Abr": 10.8,
+      "May": 10.0,
+      "Jun": 10.4,
+      "Jul": 11.1,
+      "Ago": 12.0,
+      "Sep": 13.5,
+      "Oct": 13.4,
+      "Nov": 13.9,
+      "Dic": 12.7
+    }
   },
   {
     "ICAO": "SABE",
     "Estación": "AEROPARQUE AERO",
-    "viento_promedio": 15.041666666666666,
+    "viento_promedio": 15.04,
     "lat": -34.55,
     "lon": -58.416667,
-    "Provincia": "CAPITAL FEDERAL"
+    "Altura_m": 6.0,
+    "Provincia": "CAPITAL FEDERAL",
+    "mensual": {
+      "Ene": 16.8,
+      "Feb": 15.8,
+      "Mar": 14.9,
+      "Abr": 13.9,
+      "May": 12.9,
+      "Jun": 12.2,
+      "Jul": 13.2,
+      "Ago": 14.0,
+      "Sep": 16.6,
+      "Oct": 17.2,
+      "Nov": 17.1,
+      "Dic": 15.9
+    }
   },
   {
     "ICAO": "SABA",
     "Estación": "BUENOS AIRES OBSERVATORIO",
-    "viento_promedio": 8.316666666666666,
+    "viento_promedio": 8.32,
     "lat": -34.583333,
     "lon": -58.483333,
-    "Provincia": "CAPITAL FEDERAL"
+    "Altura_m": 25.0,
+    "Provincia": "CAPITAL FEDERAL",
+    "mensual": {
+      "Ene": 8.9,
+      "Feb": 8.3,
+      "Mar": 7.6,
+      "Abr": 7.2,
+      "May": 7.1,
+      "Jun": 7.2,
+      "Jul": 7.7,
+      "Ago": 8.4,
+      "Sep": 9.2,
+      "Oct": 9.5,
+      "Nov": 9.6,
+      "Dic": 9.1
+    }
   },
   {
     "ICAO": "SAZR",
     "Estación": "SANTA ROSA AERO",
-    "viento_promedio": 14.733333333333334,
+    "viento_promedio": 14.73,
     "lat": -36.583333,
     "lon": -64.266667,
-    "Provincia": "LA PAMPA"
+    "Altura_m": 191.0,
+    "Provincia": "LA PAMPA",
+    "mensual": {
+      "Ene": 16.8,
+      "Feb": 15.0,
+      "Mar": 15.1,
+      "Abr": 13.5,
+      "May": 12.3,
+      "Jun": 11.8,
+      "Jul": 12.9,
+      "Ago": 14.4,
+      "Sep": 15.9,
+      "Oct": 16.1,
+      "Nov": 16.6,
+      "Dic": 16.4
+    }
   },
   {
     "ICAO": "SAZT",
@@ -317,31 +902,91 @@
     "viento_promedio": 13.4,
     "lat": -37.233333,
     "lon": -59.216667,
-    "Provincia": "BUENOS AIRES"
+    "Altura_m": 175.0,
+    "Provincia": "BUENOS AIRES",
+    "mensual": {
+      "Ene": 14.0,
+      "Feb": 12.5,
+      "Mar": 11.8,
+      "Abr": 11.7,
+      "May": 11.1,
+      "Jun": 11.9,
+      "Jul": 12.8,
+      "Ago": 14.3,
+      "Sep": 14.9,
+      "Oct": 15.2,
+      "Nov": 15.4,
+      "Dic": 15.2
+    }
   },
   {
     "ICAO": "SAZM",
     "Estación": "MAR DEL PLATA AERO",
-    "viento_promedio": 14.958333333333334,
+    "viento_promedio": 14.96,
     "lat": -37.916667,
     "lon": -57.566667,
-    "Provincia": "BUENOS AIRES"
+    "Altura_m": 21.0,
+    "Provincia": "BUENOS AIRES",
+    "mensual": {
+      "Ene": 16.4,
+      "Feb": 14.9,
+      "Mar": 14.2,
+      "Abr": 13.8,
+      "May": 12.0,
+      "Jun": 14.0,
+      "Jul": 13.9,
+      "Ago": 14.8,
+      "Sep": 15.5,
+      "Oct": 16.1,
+      "Nov": 16.6,
+      "Dic": 17.3
+    }
   },
   {
     "ICAO": "SAZN",
     "Estación": "NEUQUÉN AERO",
-    "viento_promedio": 9.750000000000002,
+    "viento_promedio": 9.75,
     "lat": -38.95,
     "lon": -68.133333,
-    "Provincia": "NEUQUEN"
+    "Altura_m": 271.0,
+    "Provincia": "NEUQUEN",
+    "mensual": {
+      "Ene": 12.1,
+      "Feb": 10.4,
+      "Mar": 8.4,
+      "Abr": 7.7,
+      "May": 7.0,
+      "Jun": 8.3,
+      "Jul": 7.9,
+      "Ago": 9.3,
+      "Sep": 10.2,
+      "Oct": 10.9,
+      "Nov": 12.0,
+      "Dic": 12.8
+    }
   },
   {
     "ICAO": "SAZB",
     "Estación": "BAHÍA BLANCA AERO",
-    "viento_promedio": 18.225,
+    "viento_promedio": 18.23,
     "lat": -38.7,
     "lon": -62.15,
-    "Provincia": "BUENOS AIRES"
+    "Altura_m": 83.0,
+    "Provincia": "BUENOS AIRES",
+    "mensual": {
+      "Ene": 21.6,
+      "Feb": 18.6,
+      "Mar": 18.0,
+      "Abr": 15.9,
+      "May": 15.5,
+      "Jun": 17.4,
+      "Jul": 16.6,
+      "Ago": 18.8,
+      "Sep": 18.3,
+      "Oct": 18.3,
+      "Nov": 19.2,
+      "Dic": 20.5
+    }
   },
   {
     "ICAO": "SAZS",
@@ -349,102 +994,297 @@
     "viento_promedio": 19.55,
     "lat": -41.133333,
     "lon": -71.15,
-    "Provincia": "RIO NEGRO"
+    "Altura_m": 835.0,
+    "Provincia": "RIO NEGRO",
+    "mensual": {
+      "Ene": 22.2,
+      "Feb": 18.9,
+      "Mar": 17.9,
+      "Abr": 16.9,
+      "May": 16.1,
+      "Jun": 19.1,
+      "Jul": 17.0,
+      "Ago": 18.5,
+      "Sep": 19.1,
+      "Oct": 20.5,
+      "Nov": 23.7,
+      "Dic": 24.7
+    }
   },
   {
     "ICAO": "SAVQ",
     "Estación": "MAQUINCHAO",
-    "viento_promedio": 13.583333333333334,
+    "viento_promedio": 13.58,
     "lat": -41.233333,
     "lon": -68.7,
-    "Provincia": "RIO NEGRO"
+    "Altura_m": 888.0,
+    "Provincia": "RIO NEGRO",
+    "mensual": {
+      "Ene": 16.3,
+      "Feb": 13.3,
+      "Mar": 11.3,
+      "Abr": 10.6,
+      "May": 10.4,
+      "Jun": 12.6,
+      "Jul": 10.9,
+      "Ago": 14.1,
+      "Sep": 13.9,
+      "Oct": 14.6,
+      "Nov": 16.9,
+      "Dic": 18.1
+    }
   },
   {
     "ICAO": "SAVB",
     "Estación": "EL BOLSÓN AERO*",
-    "viento_promedio": 5.825,
+    "viento_promedio": 5.83,
     "lat": -41.95,
     "lon": -71.533333,
-    "Provincia": "RIO NEGRO"
+    "Altura_m": 326.0,
+    "Provincia": "RIO NEGRO",
+    "mensual": {
+      "Ene": 5.9,
+      "Feb": 5.8,
+      "Mar": 4.5,
+      "Abr": 3.9,
+      "May": 4.9,
+      "Jun": 5.8,
+      "Jul": 5.0,
+      "Ago": 6.1,
+      "Sep": 5.6,
+      "Oct": 7.6,
+      "Nov": 7.7,
+      "Dic": 7.1
+    }
   },
   {
     "ICAO": "SAVE",
     "Estación": "ESQUEL AERO",
-    "viento_promedio": 15.733333333333334,
+    "viento_promedio": 15.73,
     "lat": -42.9,
     "lon": -71.133333,
-    "Provincia": "CHUBUT"
+    "Altura_m": 797.0,
+    "Provincia": "CHUBUT",
+    "mensual": {
+      "Ene": 19.9,
+      "Feb": 16.3,
+      "Mar": 14.4,
+      "Abr": 13.5,
+      "May": 12.6,
+      "Jun": 14.0,
+      "Jul": 12.5,
+      "Ago": 14.0,
+      "Sep": 14.4,
+      "Oct": 16.4,
+      "Nov": 19.8,
+      "Dic": 21.0
+    }
   },
   {
     "ICAO": "SAVT",
     "Estación": "TRELEW AERO",
-    "viento_promedio": 17.258333333333333,
+    "viento_promedio": 17.26,
     "lat": -43.2,
     "lon": -65.266667,
-    "Provincia": "CHUBUT"
+    "Altura_m": 43.0,
+    "Provincia": "CHUBUT",
+    "mensual": {
+      "Ene": 21.3,
+      "Feb": 18.5,
+      "Mar": 16.2,
+      "Abr": 15.1,
+      "May": 14.3,
+      "Jun": 15.1,
+      "Jul": 14.8,
+      "Ago": 16.6,
+      "Sep": 17.0,
+      "Oct": 17.8,
+      "Nov": 19.8,
+      "Dic": 20.6
+    }
   },
   {
     "ICAO": "SAWP",
     "Estación": "PERITO MORENO AERO",
-    "viento_promedio": 26.916666666666668,
+    "viento_promedio": 26.92,
     "lat": -46.533333,
     "lon": -70.983333,
-    "Provincia": "SANTA CRUZ"
+    "Altura_m": 429.0,
+    "Provincia": "SANTA CRUZ",
+    "mensual": {
+      "Ene": 35.4,
+      "Feb": 30.0,
+      "Mar": 26.8,
+      "Abr": 23.8,
+      "May": 19.9,
+      "Jun": 21.6,
+      "Jul": 20.0,
+      "Ago": 22.4,
+      "Sep": 24.4,
+      "Oct": 28.1,
+      "Nov": 34.1,
+      "Dic": 36.5
+    }
   },
   {
     "ICAO": "SAVC",
     "Estación": "COMODORO RIVADAVIA AERO",
-    "viento_promedio": 20.266666666666666,
+    "viento_promedio": 20.27,
     "lat": -45.783333,
     "lon": -67.45,
-    "Provincia": "CHUBUT"
+    "Altura_m": 46.0,
+    "Provincia": "CHUBUT",
+    "mensual": {
+      "Ene": 23.2,
+      "Feb": 20.4,
+      "Mar": 18.1,
+      "Abr": 18.5,
+      "May": 18.0,
+      "Jun": 20.6,
+      "Jul": 18.6,
+      "Ago": 20.0,
+      "Sep": 19.3,
+      "Oct": 19.5,
+      "Nov": 22.6,
+      "Dic": 24.4
+    }
   },
   {
     "ICAO": "SAWC",
     "Estación": "EL CALAFATE AERO*",
-    "viento_promedio": 17.558333333333334,
+    "viento_promedio": 17.56,
     "lat": -50.283333,
     "lon": -72.05,
-    "Provincia": "SANTA CRUZ"
+    "Altura_m": 204.0,
+    "Provincia": "SANTA CRUZ",
+    "mensual": {
+      "Ene": 23.2,
+      "Feb": 20.6,
+      "Mar": 18.1,
+      "Abr": 15.6,
+      "May": 11.8,
+      "Jun": 12.9,
+      "Jul": 11.7,
+      "Ago": 13.6,
+      "Sep": 16.0,
+      "Oct": 18.9,
+      "Nov": 23.9,
+      "Dic": 24.4
+    }
   },
   {
     "ICAO": "SAWJ",
     "Estación": "SAN JULIÁN AERO",
-    "viento_promedio": 25.88333333333333,
+    "viento_promedio": 25.88,
     "lat": -49.3,
     "lon": -67.8,
-    "Provincia": "SANTA CRUZ"
+    "Altura_m": 62.0,
+    "Provincia": "SANTA CRUZ",
+    "mensual": {
+      "Ene": 27.6,
+      "Feb": 25.4,
+      "Mar": 23.9,
+      "Abr": 24.0,
+      "May": 22.7,
+      "Jun": 25.6,
+      "Jul": 23.9,
+      "Ago": 25.6,
+      "Sep": 26.2,
+      "Oct": 26.7,
+      "Nov": 29.8,
+      "Dic": 29.2
+    }
   },
   {
     "ICAO": "SAWG",
     "Estación": "RÍO GALLEGOS AERO",
-    "viento_promedio": 22.375000000000004,
+    "viento_promedio": 22.38,
     "lat": -51.6,
     "lon": -69.3,
-    "Provincia": "SANTA CRUZ"
+    "Altura_m": 19.0,
+    "Provincia": "SANTA CRUZ",
+    "mensual": {
+      "Ene": 26.2,
+      "Feb": 23.5,
+      "Mar": 21.6,
+      "Abr": 20.5,
+      "May": 18.3,
+      "Jun": 19.6,
+      "Jul": 18.8,
+      "Ago": 20.4,
+      "Sep": 21.0,
+      "Oct": 23.7,
+      "Nov": 27.8,
+      "Dic": 27.1
+    }
   },
   {
     "ICAO": "SAWE",
     "Estación": "RÍO GRANDE B.A.",
-    "viento_promedio": 23.60833333333333,
+    "viento_promedio": 23.61,
     "lat": -53.766667,
     "lon": -67.75,
-    "Provincia": "TIERRA DEL FUEGO"
+    "Altura_m": 22.0,
+    "Provincia": "TIERRA DEL FUEGO",
+    "mensual": {
+      "Ene": 28.7,
+      "Feb": 25.6,
+      "Mar": 24.1,
+      "Abr": 20.7,
+      "May": 18.4,
+      "Jun": 19.5,
+      "Jul": 18.6,
+      "Ago": 20.4,
+      "Sep": 22.0,
+      "Oct": 26.8,
+      "Nov": 29.9,
+      "Dic": 28.6
+    }
   },
   {
     "ICAO": "SAWH",
     "Estación": "USHUAIA AERO*",
-    "viento_promedio": 22.666666666666668,
+    "viento_promedio": 22.67,
     "lat": -54.833333,
     "lon": -68.3,
-    "Provincia": "TIERRA DEL FUEGO"
+    "Altura_m": 57.0,
+    "Provincia": "TIERRA DEL FUEGO",
+    "mensual": {
+      "Ene": 27.4,
+      "Feb": 23.7,
+      "Mar": 21.2,
+      "Abr": 21.4,
+      "May": 18.6,
+      "Jun": 19.5,
+      "Jul": 20.0,
+      "Ago": 20.0,
+      "Sep": 22.0,
+      "Oct": 24.9,
+      "Nov": 27.3,
+      "Dic": 26.0
+    }
   },
   {
     "ICAO": "SAYO",
     "Estación": "BASE ORCADAS",
-    "viento_promedio": 21.65833333333333,
+    "viento_promedio": 21.66,
     "lat": -60.733333,
     "lon": -44.733333,
-    "Provincia": "ANTARTIDA"
+    "Altura_m": 12.0,
+    "Provincia": "ANTARTIDA",
+    "mensual": {
+      "Ene": 19.2,
+      "Feb": 23.0,
+      "Mar": 23.4,
+      "Abr": 23.5,
+      "May": 21.5,
+      "Jun": 20.4,
+      "Jul": 21.6,
+      "Ago": 22.9,
+      "Sep": 23.9,
+      "Oct": 21.6,
+      "Nov": 20.6,
+      "Dic": 18.3
+    }
   }
 ]

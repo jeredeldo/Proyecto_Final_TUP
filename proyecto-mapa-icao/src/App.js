@@ -345,13 +345,13 @@ function App() {
               className={`tab ${mapType === 'heatmap' ? 'tab-active' : ''}`}
               onClick={() => setMapType('heatmap')}
             >
-              🌡️ Heatmap
+              🌡️ Mapa de calor
             </button>
             <button
               className={`tab ${mapType === 'bubble' ? 'tab-active' : ''}`}
               onClick={() => setMapType('bubble')}
             >
-              🫧 Burbujas
+              🫧 Mapa de burbujas
             </button>
           </div>
 

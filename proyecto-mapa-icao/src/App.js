@@ -274,6 +274,7 @@ function App() {
           center={[-38, -65]}
           zoom={5}
           style={{ height: '100%', width: '100%' }}
+          attributionControl={false}
         >
           <TileLayer
             key={darkMode ? 'dark' : 'light'}

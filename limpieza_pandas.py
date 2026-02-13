@@ -57,14 +57,22 @@ print("Ejemplo ICAO:")
 print(df_icao[['Estación', 'Estación_norm', 'ICAO', 'lat', 'lon']].head(10))
 
 # ── Merge por nombre normalizado ────────────────────────────────────────────
+# Eliminar duplicados en ICAO: priorizar filas que tengan código ICAO
+df_icao_clean = df_icao.sort_values('ICAO', na_position='last').drop_duplicates(subset=['Estación_norm'], keep='first')
+
 df_merged = pd.merge(
     df_wind[['Estación', 'Estación_norm', 'viento_promedio']],
-    df_icao[['Estación_norm', 'ICAO', 'lat', 'lon', 'Altura_m', 'Provincia']],
+    df_icao_clean[['Estación_norm', 'ICAO', 'lat', 'lon', 'Altura_m', 'Provincia']],
     on='Estación_norm',
     how='left'
 )
 
 df_merged = df_merged.drop(columns=['Estación_norm'])
+
+# Filtrar: solo estaciones con ICAO y coordenadas válidas
+df_merged = df_merged.dropna(subset=['ICAO', 'lat', 'lon'])
+df_merged = df_merged[df_merged['ICAO'].str.strip() != '']
+df_merged = df_merged.drop_duplicates(subset=['ICAO'])
 
 print(f"\nTotal merged: {len(df_merged)}")
 print(f"Con ICAO y coordenadas: {df_merged['ICAO'].notna().sum()}")

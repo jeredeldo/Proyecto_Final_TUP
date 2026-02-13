@@ -20,6 +20,27 @@
   border-bottom: 1px solid #30363d;
   padding: 14px 24px;
 }
+
+/* ─── Theme toggle ─── */
+.btn-theme-toggle {
+  margin-left: auto;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  padding: 0;
+}
+.btn-theme-toggle:hover {
+  background: #30363d;
+  border-color: #58a6ff;
+}
 .header-icon { font-size: 32px; }
 .header-title {
   font-size: 1.3rem;
@@ -163,6 +184,69 @@
   text-align: center;
   font-size: 0.75rem;
   color: rgba(255,255,255,0.4);
+}
+
+/* ─── Light mode (atenuado) ─── */
+.light-mode {
+  background: #d8dce2;
+  color: #2c2c2c;
+}
+.light-mode .app-header {
+  background: linear-gradient(135deg, #c8cdd4, #d8dce2);
+  border-bottom-color: #b0b8c1;
+}
+.light-mode .header-title { color: #2c2c2c; }
+.light-mode .header-sub { color: rgba(0,0,0,0.45); }
+.light-mode .btn-theme-toggle {
+  background: #c8cdd4;
+  border-color: #b0b8c1;
+}
+.light-mode .btn-theme-toggle:hover {
+  background: #b0b8c1;
+  border-color: #5a9bd5;
+}
+.light-mode .controls-panel {
+  background: #c8cdd4;
+  border-bottom-color: #b0b8c1;
+}
+.light-mode .search-input {
+  background: #e2e6eb;
+  border-color: #b0b8c1;
+  color: #2c2c2c;
+}
+.light-mode .search-input::placeholder { color: rgba(0,0,0,0.3); }
+.light-mode .search-input:focus { border-color: #5a9bd5; }
+.light-mode .btn-secondary {
+  background: #bfc5cc;
+  color: #2c2c2c;
+  border-color: #b0b8c1;
+}
+.light-mode .btn-secondary:hover { background: #b0b8c1; }
+.light-mode .tab { color: #5a6370; }
+.light-mode .tab:hover { background: #bfc5cc; color: #2c2c2c; }
+.light-mode .tab-active {
+  background: #bfc5cc;
+  color: #3b7bbf;
+  box-shadow: inset 0 -2px 0 #3b7bbf;
+}
+.light-mode .chip {
+  background: #bfc5cc;
+  color: #2c2c2c;
+  border-color: #b0b8c1;
+}
+.light-mode .chip-blue { border-color: #3b7bbf; color: #3b7bbf; }
+.light-mode .chip-green { border-color: #2d7a45; color: #2d7a45; }
+.light-mode .chip-red { border-color: #b82530; color: #b82530; }
+.light-mode .leaflet-container { background: #d8dce2 !important; }
+.light-mode .legend {
+  background: rgba(210,215,222,0.94);
+  border-color: #b0b8c1;
+  color: #2c2c2c;
+}
+.light-mode .app-footer {
+  background: #d8dce2;
+  border-top-color: #b0b8c1;
+  color: rgba(0,0,0,0.4);
 }
 
 /* ─── Responsive ─── */

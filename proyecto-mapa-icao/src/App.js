@@ -174,6 +174,7 @@ function App() {
   const [filter, setFilter] = useState('');
   const [activeFilter, setActiveFilter] = useState('');
   const [mapType, setMapType] = useState('bubble');
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     fetch(process.env.PUBLIC_URL + '/data.json')
@@ -210,14 +211,21 @@ function App() {
   const resetFilter = () => { setFilter(''); setActiveFilter(''); };
 
   return (
-    <div className="app">
+    <div className={`app ${darkMode ? '' : 'light-mode'}`}>
       {/* Header */}
       <header className="app-header">
         <span className="header-icon">&#x1F4A8;</span>
         <div>
           <h1 className="header-title">Estaciones Meteorológicas ICAO</h1>
-          <p className="header-sub">Viento promedio anual — Argentina</p>
+          <p className="header-sub">Viento promedio Argentina 1991 - 2020</p>
         </div>
+        <button
+          className="btn btn-theme-toggle"
+          onClick={() => setDarkMode((prev) => !prev)}
+          title={darkMode ? 'Modo día' : 'Modo noche'}
+        >
+          {darkMode ? '☀️' : '🌙'}
+        </button>
       </header>
 
       {/* Controls */}
@@ -268,7 +276,11 @@ function App() {
           style={{ height: '100%', width: '100%' }}
         >
           <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            key={darkMode ? 'dark' : 'light'}
+            url={darkMode
+              ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+              : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+            }
             attribution='&copy; CARTO'
           />
           {mapType === 'heatmap' && <HeatmapLayer points={filteredData} />}

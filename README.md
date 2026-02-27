@@ -1,6 +1,6 @@
 # 💨 Mapa de Estaciones Meteorológicas ICAO — Argentina
 
-Visualización interactiva del **viento promedio anual** en estaciones meteorológicas argentinas, con datos del Servicio Meteorológico Nacional (SMN) y códigos ICAO.
+Visualización interactiva del **viento promedio 1991-2020** en estaciones meteorológicas argentinas, con datos del Servicio Meteorológico Nacional (SMN) y códigos ICAO.
 
 > **Proyecto Final** — Tecnicatura Universitaria en Programación (TUP)
 

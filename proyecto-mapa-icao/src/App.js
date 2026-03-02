@@ -369,6 +369,9 @@ function App() {
         <MapContainer
           center={[-38, -65]}
           zoom={5}
+          minZoom={3}
+          maxBounds={[[-90, -200], [90, 200]]}
+          maxBoundsViscosity={1.0}
           style={{ height: '100%', width: '100%' }}
           attributionControl={false}
         >
@@ -379,6 +382,7 @@ function App() {
               : 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
             }
             attribution='&copy; CARTO'
+            noWrap={true}
           />
           {mapType === 'heatmap' && <HeatmapLayer points={filteredData} />}
           {mapType === 'bubble' && <BubbleLayer stations={filteredData} onStationClick={setSelectedStation} />}

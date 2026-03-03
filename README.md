@@ -8,13 +8,13 @@ Visualización interactiva del **viento promedio 1991-2020** en estaciones meteo
 
 ## 📸 ¿Qué hace?
 
-1. **Scripts Python** descargan datos del SMN e ICAO, los cruzan y generan un dataset limpio
-2. El dataset se guarda como **CSV** y opcionalmente en **PostgreSQL**
+1. Un **script Python** descarga datos del SMN e ICAO, los cruza y genera `data.json`
+2. Opcionalmente guarda los datos en **PostgreSQL**
 3. Una **app React** muestra los datos en dos mapas interactivos:
    - 🫧 **Burbujas** — Círculos proporcionales al viento, coloreados por intensidad
    - 🌡️ **Heatmap** — Mapa de calor con densidad de viento promedio
 
-Incluye filtrado por código ICAO, nombre de estación o provincia, y estadísticas en vivo.
+Incluye filtrado por código ICAO, nombre de estación o provincia, estadísticas en vivo, panel de detalle por estación con gráfico de barras mensual, y modo claro/oscuro.
 
 ---
 
@@ -22,18 +22,16 @@ Incluye filtrado por código ICAO, nombre de estación o provincia, y estadísti
 
 ```
 Proyecto_Final_TUP/
-├── limpieza_pandas.py          # Descarga, limpia y cruza datos SMN + ICAO
-├── procesar_csv.py             # Genera data.json para la app React
-├── visualizacion_mapas.py      # Mapas con Plotly (standalone, sin React)
-├── estaciones_viento_con_icao_coords.csv  # Dataset generado
+├── procesar_csv.py             # Descarga SMN + ICAO, cruza y genera data.json
+├── data.json                   # Dataset generado (copia raíz)
 │
 └── proyecto-mapa-icao/         # App React
     ├── public/
     │   ├── data.json           # Datos que consume la app
     │   └── index.html
     └── src/
-        ├── App.js              # Componente principal (mapa + filtros)
-        ├── App.css             # Estilos (tema oscuro)
+        ├── App.js              # Componente principal (mapas + filtros + detalle)
+        ├── App.css             # Estilos (tema oscuro / claro)
         ├── index.js            # Entry point
         └── index.css           # Estilos globales
 ```
@@ -60,33 +58,21 @@ git clone https://github.com/jeredeldo/Proyecto_Final_TUP.git
 cd Proyecto_Final_TUP
 ```
 
-### 2. Scripts Python (datos)
+### 2. Script Python (datos)
 
 Instalar dependencias de Python:
 
 ```bash
-pip install pandas numpy requests sqlalchemy psycopg2-binary
+pip install pandas requests sqlalchemy psycopg2-binary
 ```
 
-**Generar el dataset** (descarga datos del SMN + ICAO y los cruza):
-
-```bash
-python limpieza_pandas.py
-```
-
-Esto genera `estaciones_viento_con_icao_coords.csv` y, si tenés PostgreSQL configurado, guarda los datos en la tabla `estaciones`.
-
-**Generar `data.json`** para la app React:
+**Generar `data.json`** (descarga datos del SMN + ICAO, los cruza y genera el JSON):
 
 ```bash
 python procesar_csv.py
 ```
 
-Esto crea `data.json`. Copialo a la carpeta de la app:
-
-```bash
-cp data.json proyecto-mapa-icao/public/data.json
-```
+Esto descarga los datos desde GitHub Gists, los cruza por estación, guarda `data.json` tanto en la raíz como en `proyecto-mapa-icao/public/`, y opcionalmente inserta los datos en PostgreSQL.
 
 > 💡 El repositorio ya incluye un `data.json` listo para usar, así que podés saltear este paso si no necesitás actualizar los datos.
 
@@ -102,9 +88,9 @@ Abrir **http://localhost:3000** en el navegador.
 
 ---
 
-## 🗄️ PostgreSQL (opcional)
+## �️ PostgreSQL (opcional)
 
-Si querés guardar los datos en una base de datos PostgreSQL:
+El script intenta guardar los datos en PostgreSQL automáticamente. Para que funcione:
 
 1. Crear la base de datos:
 
@@ -112,7 +98,7 @@ Si querés guardar los datos en una base de datos PostgreSQL:
 CREATE DATABASE estaciones;
 ```
 
-2. Editar las credenciales en `limpieza_pandas.py`:
+2. Editar las credenciales en `procesar_csv.py`:
 
 ```python
 DB_USER = "postgres"
@@ -122,21 +108,24 @@ DB_PORT = "5432"
 DB_NAME = "estaciones"
 ```
 
-3. Ejecutar el script:
+3. Ejecutar el script normalmente:
 
 ```bash
-python limpieza_pandas.py
+python procesar_csv.py
 ```
+
+Si PostgreSQL no está disponible, el script genera `data.json` de todas formas y muestra un mensaje informativo.
 
 ---
 
-## 🗺️ Uso de la app
+## �🗺️ Uso de la app
 
 | Acción | Cómo |
 | --- | --- |
 | **Filtrar** | Escribí un código ICAO (ej: `SAEZ`), nombre de estación o provincia en la barra de búsqueda |
 | **Cambiar mapa** | Usá los tabs **Heatmap** / **Burbujas** |
-| **Ver datos** | Pasá el mouse sobre una burbuja para ver ICAO, estación, viento y provincia |
+| **Ver tooltip** | Pasá el mouse sobre una burbuja para ver ICAO, estación, viento y provincia |
+| **Ver detalle** | Hacé clic en una burbuja para abrir el panel con datos completos y gráfico mensual |
 | **Zoom** | Scroll o botones +/- del mapa |
 | **Limpiar filtro** | Botón "Limpiar" o borrá el texto |
 
@@ -153,9 +142,9 @@ python limpieza_pandas.py
 
 | Capa | Stack |
 | --- | --- |
-| **Datos** | Python, Pandas, SQLAlchemy, PostgreSQL |
-| **Frontend** | React 18, Leaflet, react-leaflet, leaflet.heat |
-| **Mapas** | OpenStreetMap (tiles via CARTO dark) |
+| **Datos** | Python, Pandas, Requests, SQLAlchemy, PostgreSQL |
+| **Frontend** | React 18, Leaflet, react-leaflet |
+| **Mapas** | OpenStreetMap (tiles via CARTO dark/light) |
 
 ---
 

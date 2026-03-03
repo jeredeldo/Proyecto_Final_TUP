@@ -3,6 +3,7 @@ import json
 import unicodedata
 from io import StringIO
 import requests
+from sqlalchemy import create_engine, text
 
 def normalize_station(name):
     if pd.isna(name) or not name:
@@ -75,3 +76,55 @@ for path in ["data.json", "proyecto-mapa-icao/public/data.json"]:
         json.dump(records, f, ensure_ascii=False, indent=2)
 
 print(f"Guardado {len(records)} estaciones con datos mensuales en data.json")
+
+# ── Guardar en PostgreSQL ───────────────────────────────────────────────────
+# TODO: Ajustá estos valores según tu configuración de PostgreSQL
+DB_USER = "postgres"
+DB_PASS = "postgres"  # <--- Cambiá esto por tu contraseña real
+DB_HOST = "localhost"
+DB_PORT = "5432"
+DB_NAME = "estaciones"  # <--- Asegurate de crear esta base de datos primero
+
+DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+try:
+    print(f"\nGuardando datos en PostgreSQL ({DB_NAME})...")
+    engine = create_engine(DATABASE_URL)
+
+    # Crear tabla y insertar datos usando SQL raw (compatible con Pandas 3.0 + SQLAlchemy 2.0)
+    with engine.begin() as conn:
+        conn.execute(text("DROP TABLE IF EXISTS estaciones"))
+        conn.execute(text("""
+            CREATE TABLE estaciones (
+                "Estación" TEXT,
+                viento_promedio DOUBLE PRECISION,
+                "ICAO" TEXT,
+                lat DOUBLE PRECISION,
+                lon DOUBLE PRECISION,
+                "Altura_m" DOUBLE PRECISION,
+                "Provincia" TEXT
+            )
+        """))
+        for _, row in df_merged.iterrows():
+            conn.execute(text("""
+                INSERT INTO estaciones ("Estación", viento_promedio, "ICAO", lat, lon, "Altura_m", "Provincia")
+                VALUES (:est, :viento, :icao, :lat, :lon, :alt, :prov)
+            """), {
+                "est": row.get("Estación"),
+                "viento": row.get("viento_promedio"),
+                "icao": row.get("ICAO"),
+                "lat": row.get("lat"),
+                "lon": row.get("lon"),
+                "alt": row.get("Altura_m"),
+                "prov": row.get("Provincia"),
+            })
+    print(f"¡Éxito! Tabla 'estaciones' creada con {len(df_merged)} filas.")
+except Exception as e:
+    print(f"\nNo se pudo guardar en la base de datos: {e}")
+    if "multiple values for argument 'schema'" in str(e):
+        print("ERROR DE COMPATIBILIDAD: Pandas no se lleva bien con SQLAlchemy 2.0 en este entorno.")
+        print("SOLUCIÓN RÁPIDA: Instalá una versión anterior de SQLAlchemy.")
+        print('Ejecutá: pip install "sqlalchemy<2.0"')
+    else:
+        print("Recordá instalar: pip install sqlalchemy psycopg2-binary")
+        print(f"Y crear la base de datos '{DB_NAME}' en tu servidor PostgreSQL.")
